@@ -59,6 +59,26 @@ export function TomAvatar() {
     const shapes = shapesRef.current.children;
     const tl = gsap.timeline({ repeat: -1 });
     
+    // Add rotation and pulsation to the entire group
+    gsap.set(shapesRef.current, { transformOrigin: "50% 50%" });
+    
+    // Slow rotation
+    gsap.to(shapesRef.current, {
+      rotation: 360,
+      duration: 20,
+      ease: "none",
+      repeat: -1
+    });
+    
+    // Pulsation
+    gsap.to(shapesRef.current, {
+      scale: 1.05,
+      duration: 2,
+      ease: "power1.inOut",
+      repeat: -1,
+      yoyo: true
+    });
+    
     switch (state.value) {
       case 'childhood':
         // Simple rotating circles
@@ -72,8 +92,8 @@ export function TomAvatar() {
           }, 0);
           
           tl.to(shape, {
-            x: Math.sin(index * Math.PI / 3) * 20,
-            y: Math.cos(index * Math.PI / 3) * 20,
+            x: Math.sin(index * Math.PI / 3) * 5,
+            y: Math.cos(index * Math.PI / 3) * 5,
             duration: 2 + index * 0.5,
             ease: "power1.inOut",
             repeat: -1,
@@ -129,7 +149,7 @@ export function TomAvatar() {
         // Dynamic, energetic patterns
         Array.from(shapes).forEach((shape, index) => {
           gsap.set(shape, { transformOrigin: "50% 50%" });
-          const radius = 50 + index * 20;
+          const radius = 15 + index * 3;
           const angle = (index * Math.PI * 2) / shapes.length;
           
           tl.to(shape, {
@@ -167,8 +187,8 @@ export function TomAvatar() {
           }, 0);
           
           tl.to(shape, {
-            x: Math.cos(angleInLayer + layer) * (30 + layer * 30),
-            y: Math.sin(angleInLayer + layer) * (30 + layer * 30),
+            x: Math.cos(angleInLayer + layer) * (10 + layer * 5),
+            y: Math.sin(angleInLayer + layer) * (10 + layer * 5),
             duration: 4,
             ease: "power2.inOut",
             repeat: -1,
@@ -197,7 +217,7 @@ export function TomAvatar() {
       case 'college': return 'College Years (18-22)';
       case 'chicago': return 'Chicago Years (22-27)';
       case 'startup': return 'Intuit/NCR & Startup (27-35)';
-      case 'amazon': return 'Amazon Years (35-43)';
+      case 'amazon': return 'Amazon Years (35-present)';
       default: return '';
     }
   };
@@ -207,92 +227,80 @@ export function TomAvatar() {
       case 'childhood':
         return (
           <g ref={shapesRef}>
-            <circle cx="0" cy="-50" r="60" fill="url(#grad1)" opacity="0.7" />
-            <circle cx="43" cy="25" r="60" fill="url(#grad2)" opacity="0.7" />
-            <circle cx="-43" cy="25" r="60" fill="url(#grad3)" opacity="0.7" />
+            <circle cx="0" cy="-12" r="12" fill="url(#grad1)" opacity="1" />
+            <circle cx="10.4" cy="6" r="12" fill="url(#grad2)" opacity="1" />
+            <circle cx="-10.4" cy="6" r="12" fill="url(#grad3)" opacity="1" />
           </g>
         );
 
       case 'college':
         return (
           <g ref={shapesRef}>
-            <circle cx="0" cy="0" r="40" fill="url(#grad1)" opacity="0.6" />
-            <circle cx="0" cy="-60" r="25" fill="url(#grad2)" opacity="0.5" />
-            <circle cx="52" cy="-30" r="25" fill="url(#grad2)" opacity="0.5" />
-            <circle cx="52" cy="30" r="25" fill="url(#grad2)" opacity="0.5" />
-            <circle cx="0" cy="60" r="25" fill="url(#grad2)" opacity="0.5" />
-            <circle cx="-52" cy="30" r="25" fill="url(#grad2)" opacity="0.5" />
-            <circle cx="-52" cy="-30" r="25" fill="url(#grad2)" opacity="0.5" />
-            <circle cx="30" cy="0" r="20" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="-30" cy="0" r="20" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="0" cy="0" r="15" fill="url(#grad4)" opacity="0.5" />
+            <circle cx="0" cy="0" r="8" fill="url(#grad1)" opacity="1" />
+            <circle cx="0" cy="-16" r="5" fill="url(#grad2)" opacity="1" />
+            <circle cx="13.9" cy="-8" r="5" fill="url(#grad2)" opacity="1" />
+            <circle cx="13.9" cy="8" r="5" fill="url(#grad2)" opacity="1" />
+            <circle cx="0" cy="16" r="5" fill="url(#grad2)" opacity="1" />
+            <circle cx="-13.9" cy="8" r="5" fill="url(#grad2)" opacity="1" />
+            <circle cx="-13.9" cy="-8" r="5" fill="url(#grad2)" opacity="1" />
           </g>
         );
 
       case 'chicago':
         return (
           <g ref={shapesRef}>
-            <circle cx="0" cy="0" r="80" fill="none" stroke="url(#grad1)" strokeWidth="3" opacity="0.6" />
-            <circle cx="0" cy="0" r="60" fill="url(#grad2)" opacity="0.3" />
-            <circle cx="0" cy="0" r="40" fill="none" stroke="url(#grad3)" strokeWidth="2" opacity="0.7" />
-            <circle cx="0" cy="0" r="20" fill="url(#grad4)" opacity="0.5" />
-            <circle cx="0" cy="-50" r="10" fill="url(#grad1)" opacity="0.4" />
-            <circle cx="50" cy="0" r="10" fill="url(#grad1)" opacity="0.4" />
-            <circle cx="0" cy="50" r="10" fill="url(#grad1)" opacity="0.4" />
-            <circle cx="-50" cy="0" r="10" fill="url(#grad1)" opacity="0.4" />
+            <circle cx="0" cy="0" r="20" fill="none" stroke="url(#grad1)" strokeWidth="1" opacity="1" />
+            <circle cx="0" cy="0" r="15" fill="url(#grad2)" opacity="1" />
+            <circle cx="0" cy="0" r="10" fill="none" stroke="url(#grad3)" strokeWidth="1" opacity="1" />
+            <circle cx="0" cy="0" r="5" fill="url(#grad4)" opacity="1" />
+            <circle cx="0" cy="-12" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="12" cy="0" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="0" cy="12" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="-12" cy="0" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="8.5" cy="-8.5" r="2.5" fill="url(#grad2)" opacity="1" />
           </g>
         );
 
       case 'startup':
         return (
           <g ref={shapesRef}>
-            <circle cx="0" cy="-70" r="20" fill="url(#grad1)" opacity="0.6" />
-            <circle cx="60" cy="-35" r="20" fill="url(#grad1)" opacity="0.6" />
-            <circle cx="60" cy="35" r="20" fill="url(#grad1)" opacity="0.6" />
-            <circle cx="0" cy="70" r="20" fill="url(#grad1)" opacity="0.6" />
-            <circle cx="-60" cy="35" r="20" fill="url(#grad1)" opacity="0.6" />
-            <circle cx="-60" cy="-35" r="20" fill="url(#grad1)" opacity="0.6" />
-            <circle cx="0" cy="0" r="30" fill="none" stroke="url(#grad2)" strokeWidth="3" opacity="0.7" />
-            <circle cx="0" cy="-40" r="15" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="35" cy="-20" r="15" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="35" cy="20" r="15" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="0" cy="40" r="15" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="-35" cy="20" r="15" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="-35" cy="-20" r="15" fill="url(#grad3)" opacity="0.4" />
-            <circle cx="0" cy="0" r="15" fill="url(#grad5)" opacity="0.8" />
+            <circle cx="0" cy="-16" r="4" fill="url(#grad1)" opacity="1" />
+            <circle cx="13.9" cy="-8" r="4" fill="url(#grad1)" opacity="1" />
+            <circle cx="13.9" cy="8" r="4" fill="url(#grad1)" opacity="1" />
+            <circle cx="0" cy="16" r="4" fill="url(#grad1)" opacity="1" />
+            <circle cx="-13.9" cy="8" r="4" fill="url(#grad1)" opacity="1" />
+            <circle cx="-13.9" cy="-8" r="4" fill="url(#grad1)" opacity="1" />
+            <circle cx="0" cy="0" r="7" fill="none" stroke="url(#grad2)" strokeWidth="1" opacity="1" />
+            <circle cx="0" cy="-10" r="3" fill="url(#grad3)" opacity="1" />
+            <circle cx="8.7" cy="-5" r="3" fill="url(#grad3)" opacity="1" />
+            <circle cx="8.7" cy="5" r="3" fill="url(#grad3)" opacity="1" />
+            <circle cx="0" cy="10" r="3" fill="url(#grad3)" opacity="1" />
+            <circle cx="-8.7" cy="5" r="3" fill="url(#grad3)" opacity="1" />
           </g>
         );
 
       case 'amazon':
         return (
           <g ref={shapesRef}>
-            {/* Inner core */}
-            <circle cx="0" cy="0" r="20" fill="url(#grad5)" opacity="0.9" />
-            <circle cx="0" cy="-30" r="12" fill="url(#grad1)" opacity="0.7" />
-            <circle cx="26" cy="-15" r="12" fill="url(#grad1)" opacity="0.7" />
-            <circle cx="26" cy="15" r="12" fill="url(#grad1)" opacity="0.7" />
-            <circle cx="0" cy="30" r="12" fill="url(#grad1)" opacity="0.7" />
-            <circle cx="-26" cy="15" r="12" fill="url(#grad1)" opacity="0.7" />
-            <circle cx="-26" cy="-15" r="12" fill="url(#grad1)" opacity="0.7" />
+            {/* Inner core - 6 circles */}
+            <circle cx="0" cy="0" r="5" fill="url(#grad5)" opacity="1" />
+            <circle cx="0" cy="-8" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="7" cy="-4" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="7" cy="4" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="0" cy="8" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="-7" cy="4" r="2.5" fill="url(#grad1)" opacity="1" />
+            <circle cx="-7" cy="-4" r="2.5" fill="url(#grad1)" opacity="1" />
             
-            {/* Middle layer */}
-            <circle cx="0" cy="0" r="60" fill="none" stroke="url(#grad2)" strokeWidth="2" opacity="0.6" />
-            <circle cx="0" cy="-50" r="15" fill="url(#grad3)" opacity="0.5" />
-            <circle cx="43" cy="-25" r="15" fill="url(#grad3)" opacity="0.5" />
-            <circle cx="43" cy="25" r="15" fill="url(#grad3)" opacity="0.5" />
-            <circle cx="0" cy="50" r="15" fill="url(#grad3)" opacity="0.5" />
-            <circle cx="-43" cy="25" r="15" fill="url(#grad3)" opacity="0.5" />
-            <circle cx="-43" cy="-25" r="15" fill="url(#grad3)" opacity="0.5" />
+            {/* Middle layer - 6 circles */}
+            <circle cx="0" cy="0" r="16" fill="none" stroke="url(#grad2)" strokeWidth="1" opacity="1" />
+            <circle cx="0" cy="-14" r="3" fill="url(#grad3)" opacity="1" />
+            <circle cx="12.1" cy="-7" r="3" fill="url(#grad3)" opacity="1" />
             
-            {/* Outer layer */}
-            <circle cx="0" cy="0" r="90" fill="none" stroke="url(#grad4)" strokeWidth="1.5" opacity="0.4" />
-            <circle cx="0" cy="-80" r="10" fill="url(#grad5)" opacity="0.3" />
-            <circle cx="69" cy="-40" r="10" fill="url(#grad5)" opacity="0.3" />
-            <circle cx="69" cy="40" r="10" fill="url(#grad5)" opacity="0.3" />
-            <circle cx="0" cy="80" r="10" fill="url(#grad5)" opacity="0.3" />
-            <circle cx="-69" cy="40" r="10" fill="url(#grad5)" opacity="0.3" />
-            <circle cx="-69" cy="-40" r="10" fill="url(#grad5)" opacity="0.3" />
-            <circle cx="0" cy="0" r="100" fill="none" stroke="url(#grad1)" strokeWidth="1" opacity="0.2" />
+            {/* Outer layer - 3 circles */}
+            <circle cx="0" cy="0" r="28" fill="none" stroke="url(#grad4)" strokeWidth="1" opacity="1" />
+            <circle cx="0" cy="-24" r="2" fill="url(#grad5)" opacity="1" />
+            <circle cx="20.8" cy="-12" r="2" fill="url(#grad5)" opacity="1" />
+            <circle cx="20.8" cy="12" r="2" fill="url(#grad5)" opacity="1" />
           </g>
         );
 
@@ -305,31 +313,31 @@ export function TomAvatar() {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
       <svg 
         ref={svgRef}
-        width="400" 
-        height="400" 
-        viewBox="-200 -200 400 400"
-        style={{ background: '#0a0a0a', borderRadius: '20px' }}
+        width="100" 
+        height="100" 
+        viewBox="-60 -60 120 120"
+        style={{ overflow: 'visible' }}
       >
         <defs>
           <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(34, 211, 238, 0.8)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.2)" />
+            <stop offset="0%" stopColor="rgba(124, 58, 237, 0.9)" />
+            <stop offset="100%" stopColor="rgba(124, 58, 237, 0.3)" />
           </radialGradient>
           <radialGradient id="grad2" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(16, 185, 129, 0.8)" />
-            <stop offset="100%" stopColor="rgba(34, 211, 238, 0.2)" />
+            <stop offset="0%" stopColor="rgba(99, 102, 241, 0.9)" />
+            <stop offset="100%" stopColor="rgba(99, 102, 241, 0.3)" />
           </radialGradient>
           <radialGradient id="grad3" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.8)" />
-            <stop offset="100%" stopColor="rgba(16, 185, 129, 0.2)" />
+            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.9)" />
+            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.3)" />
           </radialGradient>
           <radialGradient id="grad4" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(139, 92, 246, 0.8)" />
-            <stop offset="100%" stopColor="rgba(34, 211, 238, 0.2)" />
+            <stop offset="0%" stopColor="rgba(34, 211, 238, 0.9)" />
+            <stop offset="100%" stopColor="rgba(34, 211, 238, 0.3)" />
           </radialGradient>
           <radialGradient id="grad5" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(251, 146, 60, 0.8)" />
-            <stop offset="100%" stopColor="rgba(139, 92, 246, 0.2)" />
+            <stop offset="0%" stopColor="rgba(16, 185, 129, 0.9)" />
+            <stop offset="100%" stopColor="rgba(16, 185, 129, 0.3)" />
           </radialGradient>
         </defs>
         

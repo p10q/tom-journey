@@ -1,42 +1,447 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100%;
+  position: relative;
+}
+
+/* Fixed Tom Avatar */
+.fixed-avatar {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(26, 26, 46, 0.95);
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Adjust TomAvatar styles when fixed */
+.fixed-avatar h2 {
+  font-size: 0.9rem !important;
+  margin: 0.5rem 0 !important;
+  color: #e0e0e0 !important;
+}
+
+.fixed-avatar button {
+  padding: 0.4em 0.8em;
+  font-size: 0.8em;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.fixed-avatar button:hover {
+  border-color: #646cff;
+  background-color: #2a2a2a;
+}
+
+/* Fixed Computer Timeline */
+.fixed-computer-timeline {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(26, 26, 46, 0.95);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  min-width: 200px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.computer-indicator {
+  color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.current-year {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.current-computer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.computer-icon {
+  font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+  color: white;
+  position: relative;
+}
+
+.hero-section .content {
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.scroll-indicator span {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.arrow-down {
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+/* Story Sections */
+.story-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.story-section .content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #1a1a2e;
+}
+
+.section-content {
+  text-align: center;
+}
+
+.narrative {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+/* New York Section */
+[data-section="new-york"] {
+  background: linear-gradient(135deg, #FFE5B4 0%, #FFCC99 100%);
+}
+
+.pizza-love {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.emoji.pizza {
+  font-size: 5rem;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Moving Section */
+[data-section="moving"] {
+  background: linear-gradient(135deg, #B4E5FF 0%, #99CCFF 100%);
+}
+
+.moving-animation {
+  margin-top: 3rem;
+}
+
+.path-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100px;
+}
+
+.path-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  background: #1a1a2e;
+  transform: translateY(-50%);
+  width: 0%;
+}
+
+.location-marker {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1a1a2e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.location-marker.start {
+  left: 0;
+}
+
+.location-marker.end {
+  right: 0;
+}
+
+/* Montessori Section */
+[data-section="montessori"] {
+  background: linear-gradient(135deg, #FFB4B4 0%, #FF99CC 100%);
+}
+
+.school-memories {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.memory-item {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Berkeley Life Section */
+[data-section="berkeley-life"] {
+  background: linear-gradient(135deg, #B4FFB4 0%, #99FF99 100%);
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.activity-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+}
+
+.activity-card .icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.activity-card h3 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  color: #1a1a2e;
+}
+
+.activity-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Computer Timeline Section */
+[data-section="computers"] {
+  background: linear-gradient(135deg, #E0B4FF 0%, #CC99FF 100%);
+}
+
+.timeline {
+  position: relative;
+  padding: 3rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #1a1a2e;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-item:nth-child(odd) .computer-card {
+  margin-right: 50%;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) .computer-card {
+  margin-left: 50%;
+  text-align: left;
+}
+
+.year {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.computer-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+}
+
+.computer-card h3 {
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  color: #1a1a2e;
+}
+
+.computer-icon {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.computer-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .section-title {
+    font-size: 2rem;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-line {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    flex-direction: column !important;
+  }
+  
+  .timeline-item:nth-child(odd) .computer-card,
+  .timeline-item:nth-child(even) .computer-card {
+    margin: 0;
+    margin-left: 60px;
+    text-align: left;
+  }
+  
+  .year {
+    left: 20px;
+    transform: translateX(0);
+  }
+  
+  /* Mobile fixed elements */
+  .fixed-avatar {
+    bottom: 10px;
+    left: 10px;
+    padding: 0.5rem;
+  }
+  
+  .fixed-avatar svg {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .fixed-computer-timeline {
+    top: 10px;
+    right: 10px;
+    padding: 1rem;
+    min-width: 150px;
+  }
+  
+  .current-computer {
+    font-size: 0.9rem;
+  }
+  
+  .computer-icon {
+    font-size: 1.2rem;
+  }
 }
