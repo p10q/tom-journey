@@ -7,11 +7,14 @@ interface AvatarContext {
   age: number;
 }
 
-const avatarMachine = createMachine<AvatarContext>({
+const avatarMachine = createMachine({
   id: 'tomAvatar',
   initial: 'childhood',
   context: {
     age: 0
+  },
+  types: {} as {
+    context: AvatarContext;
   },
   states: {
     childhood: {
