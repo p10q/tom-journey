@@ -217,33 +217,48 @@ export function TomAvatar() {
         return (
           <g ref={shapesRef}>
             <circle cx="0" cy="0" r="40" fill="url(#grad1)" opacity="0.6" />
-            <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" fill="url(#grad2)" opacity="0.5" />
-            <rect x="-30" y="-30" width="60" height="60" fill="url(#grad3)" opacity="0.4" transform="rotate(45)" />
-            <polygon points="0,-40 37,-20 37,20 0,40 -37,20 -37,-20" fill="url(#grad4)" opacity="0.5" />
+            <circle cx="0" cy="-60" r="25" fill="url(#grad2)" opacity="0.5" />
+            <circle cx="52" cy="-30" r="25" fill="url(#grad2)" opacity="0.5" />
+            <circle cx="52" cy="30" r="25" fill="url(#grad2)" opacity="0.5" />
+            <circle cx="0" cy="60" r="25" fill="url(#grad2)" opacity="0.5" />
+            <circle cx="-52" cy="30" r="25" fill="url(#grad2)" opacity="0.5" />
+            <circle cx="-52" cy="-30" r="25" fill="url(#grad2)" opacity="0.5" />
+            <circle cx="30" cy="0" r="20" fill="url(#grad3)" opacity="0.4" />
+            <circle cx="-30" cy="0" r="20" fill="url(#grad3)" opacity="0.4" />
+            <circle cx="0" cy="0" r="15" fill="url(#grad4)" opacity="0.5" />
           </g>
         );
 
       case 'chicago':
         return (
           <g ref={shapesRef}>
-            <rect x="-80" y="-80" width="160" height="160" fill="none" stroke="url(#grad1)" strokeWidth="3" opacity="0.6" />
-            <rect x="-60" y="-60" width="120" height="120" fill="url(#grad2)" opacity="0.3" />
-            <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="url(#grad3)" strokeWidth="2" opacity="0.7" />
-            <rect x="-20" y="-20" width="40" height="40" fill="url(#grad4)" opacity="0.5" />
-            <line x1="-100" y1="0" x2="100" y2="0" stroke="url(#grad1)" strokeWidth="2" opacity="0.4" />
-            <line x1="0" y1="-100" x2="0" y2="100" stroke="url(#grad1)" strokeWidth="2" opacity="0.4" />
+            <circle cx="0" cy="0" r="80" fill="none" stroke="url(#grad1)" strokeWidth="3" opacity="0.6" />
+            <circle cx="0" cy="0" r="60" fill="url(#grad2)" opacity="0.3" />
+            <circle cx="0" cy="0" r="40" fill="none" stroke="url(#grad3)" strokeWidth="2" opacity="0.7" />
+            <circle cx="0" cy="0" r="20" fill="url(#grad4)" opacity="0.5" />
+            <circle cx="0" cy="-50" r="10" fill="url(#grad1)" opacity="0.4" />
+            <circle cx="50" cy="0" r="10" fill="url(#grad1)" opacity="0.4" />
+            <circle cx="0" cy="50" r="10" fill="url(#grad1)" opacity="0.4" />
+            <circle cx="-50" cy="0" r="10" fill="url(#grad1)" opacity="0.4" />
           </g>
         );
 
       case 'startup':
         return (
           <g ref={shapesRef}>
-            <polygon points="0,-80 20,-60 80,-60 30,-20 50,40 0,0 -50,40 -30,-20 -80,-60 -20,-60" 
-                     fill="url(#grad1)" opacity="0.6" />
+            <circle cx="0" cy="-70" r="20" fill="url(#grad1)" opacity="0.6" />
+            <circle cx="60" cy="-35" r="20" fill="url(#grad1)" opacity="0.6" />
+            <circle cx="60" cy="35" r="20" fill="url(#grad1)" opacity="0.6" />
+            <circle cx="0" cy="70" r="20" fill="url(#grad1)" opacity="0.6" />
+            <circle cx="-60" cy="35" r="20" fill="url(#grad1)" opacity="0.6" />
+            <circle cx="-60" cy="-35" r="20" fill="url(#grad1)" opacity="0.6" />
             <circle cx="0" cy="0" r="30" fill="none" stroke="url(#grad2)" strokeWidth="3" opacity="0.7" />
-            <polygon points="0,-50 43,-25 43,25 0,50 -43,25 -43,-25" fill="url(#grad3)" opacity="0.4" />
-            <path d="M-40,0 Q-20,-40 0,-40 Q20,-40 40,0 Q20,40 0,40 Q-20,40 -40,0" 
-                  fill="url(#grad4)" opacity="0.5" />
+            <circle cx="0" cy="-40" r="15" fill="url(#grad3)" opacity="0.4" />
+            <circle cx="35" cy="-20" r="15" fill="url(#grad3)" opacity="0.4" />
+            <circle cx="35" cy="20" r="15" fill="url(#grad3)" opacity="0.4" />
+            <circle cx="0" cy="40" r="15" fill="url(#grad3)" opacity="0.4" />
+            <circle cx="-35" cy="20" r="15" fill="url(#grad3)" opacity="0.4" />
+            <circle cx="-35" cy="-20" r="15" fill="url(#grad3)" opacity="0.4" />
             <circle cx="0" cy="0" r="15" fill="url(#grad5)" opacity="0.8" />
           </g>
         );
@@ -253,20 +268,30 @@ export function TomAvatar() {
           <g ref={shapesRef}>
             {/* Inner core */}
             <circle cx="0" cy="0" r="20" fill="url(#grad5)" opacity="0.9" />
-            <polygon points="0,-30 26,-15 26,15 0,30 -26,15 -26,-15" fill="url(#grad1)" opacity="0.7" />
+            <circle cx="0" cy="-30" r="12" fill="url(#grad1)" opacity="0.7" />
+            <circle cx="26" cy="-15" r="12" fill="url(#grad1)" opacity="0.7" />
+            <circle cx="26" cy="15" r="12" fill="url(#grad1)" opacity="0.7" />
+            <circle cx="0" cy="30" r="12" fill="url(#grad1)" opacity="0.7" />
+            <circle cx="-26" cy="15" r="12" fill="url(#grad1)" opacity="0.7" />
+            <circle cx="-26" cy="-15" r="12" fill="url(#grad1)" opacity="0.7" />
             
             {/* Middle layer */}
-            <path d="M0,-60 L35,-35 L60,0 L35,35 L0,60 L-35,35 L-60,0 L-35,-35 Z" 
-                  fill="none" stroke="url(#grad2)" strokeWidth="2" opacity="0.6" />
+            <circle cx="0" cy="0" r="60" fill="none" stroke="url(#grad2)" strokeWidth="2" opacity="0.6" />
             <circle cx="0" cy="-50" r="15" fill="url(#grad3)" opacity="0.5" />
+            <circle cx="43" cy="-25" r="15" fill="url(#grad3)" opacity="0.5" />
             <circle cx="43" cy="25" r="15" fill="url(#grad3)" opacity="0.5" />
+            <circle cx="0" cy="50" r="15" fill="url(#grad3)" opacity="0.5" />
             <circle cx="-43" cy="25" r="15" fill="url(#grad3)" opacity="0.5" />
+            <circle cx="-43" cy="-25" r="15" fill="url(#grad3)" opacity="0.5" />
             
             {/* Outer layer */}
-            <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" 
-                     fill="none" stroke="url(#grad4)" strokeWidth="1.5" opacity="0.4" />
-            <rect x="-70" y="-70" width="140" height="140" 
-                  fill="none" stroke="url(#grad5)" strokeWidth="1" opacity="0.3" transform="rotate(30)" />
+            <circle cx="0" cy="0" r="90" fill="none" stroke="url(#grad4)" strokeWidth="1.5" opacity="0.4" />
+            <circle cx="0" cy="-80" r="10" fill="url(#grad5)" opacity="0.3" />
+            <circle cx="69" cy="-40" r="10" fill="url(#grad5)" opacity="0.3" />
+            <circle cx="69" cy="40" r="10" fill="url(#grad5)" opacity="0.3" />
+            <circle cx="0" cy="80" r="10" fill="url(#grad5)" opacity="0.3" />
+            <circle cx="-69" cy="40" r="10" fill="url(#grad5)" opacity="0.3" />
+            <circle cx="-69" cy="-40" r="10" fill="url(#grad5)" opacity="0.3" />
             <circle cx="0" cy="0" r="100" fill="none" stroke="url(#grad1)" strokeWidth="1" opacity="0.2" />
           </g>
         );
