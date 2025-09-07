@@ -1,11 +1,14 @@
-# React + TypeScript + Vite
+# Tom Journey
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 **Live Demo**: [https://p10q.github.io/tom-journey/](https://p10q.github.io/tom-journey/) (Work in Progress)
 
-Currently, two official plugins are available:
+This is an experiment in designing in code using Claude Code. Currently taking School of Motion courses and exploring why programming animations directly in code might be more flexible than forcing UI-based view models (like Rive) to do what we want.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Built With
+
+- React + TypeScript + Vite
+- Claude Code for development assistance
+- Direct code-based animation approach
 
 ## Expanding the ESLint configuration
 
