@@ -48,10 +48,54 @@ const avatarMachine = createMachine({
   }
 });
 
-export function TomAvatar() {
+interface TomAvatarProps {
+  currentScene: number;
+}
+
+export function TomAvatar({ currentScene }: TomAvatarProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [state, send] = useMachine(avatarMachine);
   const shapesRef = useRef<SVGGElement>(null);
+
+  // Update avatar state based on current scene
+  useEffect(() => {
+    // Map scene indices to avatar states
+    let targetState: string;
+    
+    if (currentScene <= 4) {
+      targetState = 'childhood';
+    } else if (currentScene === 5) {
+      targetState = 'college';
+    } else if (currentScene === 6) {
+      targetState = 'chicago';
+    } else if (currentScene === 7) {
+      targetState = 'startup';
+    } else if (currentScene === 8) {
+      targetState = 'amazon';
+    } else {
+      targetState = 'amazon';
+    }
+
+    // Navigate to target state
+    if (state.value !== targetState) {
+      // Determine if we need to go forward or back
+      const states = ['childhood', 'college', 'chicago', 'startup', 'amazon'];
+      const currentIndex = states.indexOf(state.value as string);
+      const targetIndex = states.indexOf(targetState);
+      
+      if (currentIndex < targetIndex) {
+        // Need to grow
+        if (state.can({ type: 'GROW' })) {
+          send({ type: 'GROW' });
+        }
+      } else if (currentIndex > targetIndex) {
+        // Need to go back
+        if (state.can({ type: 'BACK' })) {
+          send({ type: 'BACK' });
+        }
+      }
+    }
+  }, [currentScene, state, send]);
 
   useEffect(() => {
     if (!svgRef.current || !shapesRef.current) return;
@@ -213,11 +257,11 @@ export function TomAvatar() {
 
   const getStateLabel = () => {
     switch (state.value) {
-      case 'childhood': return 'Childhood (0-17)';
-      case 'college': return 'College Years (18-22)';
-      case 'chicago': return 'Chicago Years (22-27)';
-      case 'startup': return 'Intuit/NCR & Startup (27-35)';
-      case 'amazon': return 'Amazon Years (35-present)';
+      case 'childhood': return 'Childhood';
+      case 'college': return 'College';
+      case 'chicago': return 'Chicago';
+      case 'startup': return 'Startup';
+      case 'amazon': return 'Amazon';
       default: return '';
     }
   };
@@ -310,11 +354,11 @@ export function TomAvatar() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <svg 
         ref={svgRef}
-        width="100" 
-        height="100" 
+        width="120" 
+        height="120" 
         viewBox="-60 -60 120 120"
         style={{ overflow: 'visible' }}
       >
@@ -344,16 +388,8 @@ export function TomAvatar() {
         {renderShapes()}
       </svg>
       
-      <div style={{ textAlign: 'center' }}>
-        <h2 style={{ margin: '0 0 1rem 0', color: '#e0e0e0' }}>{getStateLabel()}</h2>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-          {state.can({ type: 'BACK' }) && (
-            <button onClick={() => send({ type: 'BACK' })}>Previous</button>
-          )}
-          {state.can({ type: 'GROW' }) && (
-            <button onClick={() => send({ type: 'GROW' })}>Next</button>
-          )}
-        </div>
+      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <h2 style={{ margin: '0', fontSize: '0.9rem', fontWeight: '600' }}>{getStateLabel()}</h2>
       </div>
     </div>
   );
