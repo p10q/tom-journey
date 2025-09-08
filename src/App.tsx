@@ -299,7 +299,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #4a3a2a 0%, #5a4a2a 100%)',
+      background: 'linear-gradient(135deg, #4a4a5a 0%, #5a5a6a 100%)',
       computer: 'MacBook Pro M4 Max',
       phone: 'iPhone 15 Pro'
     },

@@ -312,16 +312,16 @@ body[data-scene="future"] .phone-name {
 }
 
 .location-marker.nyc {
-  top: 28%;
-  right: 15%;
+  top: 29%;
+  right: 8%;
   opacity: 0;
   animation: fadeInLabel 1s ease-out forwards;
   animation-delay: 0.8s;
 }
 
 .location-marker.berkeley {
-  top: 35%;
-  left: 7%;
+  top: 43%;
+  left: 17%;
   opacity: 0;
   animation: fadeInLabel 1s ease-out forwards;
   animation-delay: 4.5s;
