@@ -28,6 +28,18 @@ body {
   overflow: hidden;
 }
 
+/* Background layers for smooth transition */
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
 /* Scene styling */
 .scene {
   position: absolute;
@@ -39,6 +51,7 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
+  z-index: 1;
 }
 
 .scene-wrapper {
@@ -56,12 +69,20 @@ body {
   color: #1a1a2e;
 }
 
+/* Force intro title to be white */
+#root .viewport .scene:first-of-type .scene-title {
+  color: white !important;
+  opacity: 1 !important;
+}
+
 /* Override for dark background scenes */
-.scene:first-child .scene-title,  /* Tom Harada */
-.scene:nth-child(6) .scene-title,  /* Amherst College */
-.scene:nth-child(7) .scene-title,  /* Chicago Trading Years */
-.scene:nth-child(8) .scene-title,  /* Mobile Banking */
-.scene:last-child .scene-title {   /* The Future */
+.scene:nth-child(1) .scene-title,   /* Tom Harada */
+.scene:nth-child(6) .scene-title,   /* Amherst College */
+.scene:nth-child(7) .scene-title,   /* Chicago Trading Years */
+.scene:nth-child(8) .scene-title,   /* Mobile Banking */
+.scene:nth-child(9) .scene-title,   /* Amazon Key */
+.scene:nth-child(10) .scene-title,  /* Intercom Plus */
+.scene:nth-child(11) .scene-title {  /* The Future */
   color: white !important;
   opacity: 1 !important;
 }
@@ -69,29 +90,46 @@ body {
 /* Dynamic color for fixed elements based on current scene */
 body[data-scene="intro"] .fixed-avatar h2,
 body[data-scene="intro"] .computer-indicator,
-body[data-scene="intro"] .current-year,
 body[data-scene="intro"] .current-computer,
 body[data-scene="intro"] .current-phone,
+body[data-scene="intro"] .computer-name,
+body[data-scene="intro"] .phone-name,
 body[data-scene="amherst"] .fixed-avatar h2,
 body[data-scene="amherst"] .computer-indicator,
-body[data-scene="amherst"] .current-year,
 body[data-scene="amherst"] .current-computer,
 body[data-scene="amherst"] .current-phone,
+body[data-scene="amherst"] .computer-name,
+body[data-scene="amherst"] .phone-name,
 body[data-scene="chicago"] .fixed-avatar h2,
 body[data-scene="chicago"] .computer-indicator,
-body[data-scene="chicago"] .current-year,
 body[data-scene="chicago"] .current-computer,
 body[data-scene="chicago"] .current-phone,
+body[data-scene="chicago"] .computer-name,
+body[data-scene="chicago"] .phone-name,
 body[data-scene="silicon-valley"] .fixed-avatar h2,
 body[data-scene="silicon-valley"] .computer-indicator,
-body[data-scene="silicon-valley"] .current-year,
 body[data-scene="silicon-valley"] .current-computer,
 body[data-scene="silicon-valley"] .current-phone,
+body[data-scene="silicon-valley"] .computer-name,
+body[data-scene="silicon-valley"] .phone-name,
+body[data-scene="amazon-key"] .fixed-avatar h2,
+body[data-scene="amazon-key"] .computer-indicator,
+body[data-scene="amazon-key"] .current-computer,
+body[data-scene="amazon-key"] .current-phone,
+body[data-scene="amazon-key"] .computer-name,
+body[data-scene="amazon-key"] .phone-name,
+body[data-scene="intercom-plus"] .fixed-avatar h2,
+body[data-scene="intercom-plus"] .computer-indicator,
+body[data-scene="intercom-plus"] .current-computer,
+body[data-scene="intercom-plus"] .current-phone,
+body[data-scene="intercom-plus"] .computer-name,
+body[data-scene="intercom-plus"] .phone-name,
 body[data-scene="future"] .fixed-avatar h2,
 body[data-scene="future"] .computer-indicator,
-body[data-scene="future"] .current-year,
 body[data-scene="future"] .current-computer,
-body[data-scene="future"] .current-phone {
+body[data-scene="future"] .current-phone,
+body[data-scene="future"] .computer-name,
+body[data-scene="future"] .phone-name {
   color: white !important;
 }
 
@@ -106,7 +144,8 @@ body[data-scene="future"] .current-phone {
 /* Intro scene */
 .scene[style*="1a1a2e"] .scene-title,
 .scene[style*="1a1a2e"] .scene-subtitle {
-  color: white;
+  color: white !important;
+  opacity: 1 !important;
 }
 
 /* Scene content */
@@ -400,13 +439,6 @@ body[data-scene="future"] .current-phone {
   color: #1a1a2e;
 }
 
-.current-year {
-  font-size: 0.8rem;
-  margin-bottom: 0.3rem;
-  font-weight: 700;
-  color: #1a1a2e;
-  opacity: 0.7;
-}
 
 .current-computer {
   display: flex;
@@ -711,8 +743,8 @@ body[data-scene="future"] .current-phone {
 }
 
 .phone-container {
-  width: 160px;
-  height: 320px;
+  width: 140px;
+  height: 280px;
   background: #333;
   border-radius: 25px;
   padding: 8px;

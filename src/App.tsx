@@ -14,7 +14,6 @@ interface Scene {
   background: string
   computer?: string
   phone?: string
-  year?: string
 }
 
 function App() {
@@ -22,8 +21,10 @@ function App() {
   const [currentScene, setCurrentScene] = useState(0)
   const [currentComputer, setCurrentComputer] = useState<string>('')
   const [currentPhone, setCurrentPhone] = useState<string>('')
-  const [currentYear, setCurrentYear] = useState<string>('')
   const scenesRef = useRef<HTMLDivElement[]>([])
+
+  // Define which scenes have dark backgrounds (need white text)
+  const darkBackgroundScenes = new Set(['intro', 'amherst', 'chicago', 'silicon-valley', 'amazon-key', 'intercom-plus', 'future'])
 
   const scenes: Scene[] = [
     {
@@ -33,6 +34,7 @@ function App() {
         <div className="scene-content intro">
           <div className="scroll-indicator" onClick={() => setCurrentScene(1)}>
             <div className="arrow-right">→</div>
+            <p style={{ color: 'white', fontSize: '0.9rem', marginTop: '0.5rem', opacity: 0.7 }}>Use arrow keys to navigate</p>
           </div>
         </div>
       ),
@@ -49,8 +51,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #FFE5B4 0%, #FFCC99 100%)',
-      year: '1980s'
+      background: 'linear-gradient(135deg, #FFE5B4 0%, #FFCC99 100%)'
     },
     {
       id: 'moving',
@@ -144,8 +145,7 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #B4FFB4 0%, #99FF99 100%)',
-      computer: 'Apple IIgs',
-      year: 'Late 1980s'
+      computer: 'Apple IIgs'
     },
     {
       id: 'amherst',
@@ -173,8 +173,7 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #4A148C 0%, #7B1FA2 100%)',
       computer: 'Toshiba Laptop → MacBook Pro',
-      phone: 'Nokia 6230 → Motorola RAZR',
-      year: 'College Years (2001-2005)'
+      phone: 'Nokia 6230 → Motorola RAZR'
     },
     {
       id: 'chicago',
@@ -210,8 +209,7 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #1A237E 0%, #283593 100%)',
       computer: 'Linux Workstations + MacBook Pro',
-      phone: 'BlackBerry Curve → iPhone 3G',
-      year: 'Trading Firm Era (2006-2009)'
+      phone: 'BlackBerry Curve → iPhone 3G'
     },
     {
       id: 'silicon-valley',
@@ -240,8 +238,7 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #00695C 0%, #00897B 100%)',
       computer: 'MacBook Pro 15"',
-      phone: 'iPhone 4 → iPhone 4S',
-      year: '2010-2012 - Startup Era'
+      phone: 'iPhone 4 → iPhone 4S'
     },
     {
       id: 'amazon-key',
@@ -284,8 +281,7 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #E65100 0%, #F57C00 100%)',
       computer: 'MacBook Pro 16" (M1 → M2)',
-      phone: 'iPhone X → 11 Pro → 12 Pro → 13 Pro',
-      year: 'Amazon Era (2013-2023)'
+      phone: 'iPhone X → 11 Pro → 12 Pro → 13 Pro'
     },
     {
       id: 'intercom-plus',
@@ -322,8 +318,7 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #FF6F00 0%, #FF8F00 100%)',
       computer: 'MacBook Pro M4 Max',
-      phone: 'iPhone 15 Pro',
-      year: '2024-2025'
+      phone: 'iPhone 15 Pro'
     },
     {
       id: 'future',
@@ -355,8 +350,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%)',
-      year: 'Tomorrow'
+      background: 'linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%)'
     }
   ]
 
@@ -401,7 +395,6 @@ function App() {
     const scene = scenes[currentScene]
     setCurrentComputer(scene.computer || '')
     setCurrentPhone(scene.phone || '')
-    setCurrentYear(scene.year || '')
     
     // Set body data attribute for CSS styling
     document.body.setAttribute('data-scene', scene.id)
@@ -420,108 +413,20 @@ function App() {
         left: 0,
         width: '100%',
         height: '100%',
-        opacity: index === 0 ? 1 : 0,
-        visibility: index === 0 ? 'visible' : 'hidden'
+        display: index === 0 ? 'flex' : 'none'
       })
     })
   }, [])
 
-  // Animate scene transitions with background color blend
+  // Switch scenes instantly
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      scenes.forEach((_, index) => {
-        const sceneEl = scenesRef.current[index]
-        if (!sceneEl) return
-
-        if (index === currentScene) {
-          // Fade in current scene
-          gsap.to(sceneEl, {
-            opacity: 1,
-            visibility: 'visible',
-            duration: 0.6,
-            ease: 'power2.inOut'
-          })
-
-          // Animate content of current scene
-          gsap.from(sceneEl.querySelectorAll('.scene-title'), {
-            y: 20,
-            opacity: 0,
-            duration: 0.4,
-            delay: 0.3,
-            ease: 'power3.out'
-          })
-
-          gsap.from(sceneEl.querySelectorAll('.scene-content > *'), {
-            y: 15,
-            opacity: 0,
-            duration: 0.3,
-            delay: 0.4,
-            stagger: 0.1,
-            ease: 'power2.out'
-          })
-
-          // Special animations for specific scenes
-          if (scenes[currentScene].id === 'new-york') {
-            gsap.to(sceneEl.querySelector('.pizza'), {
-              rotation: 360,
-              scale: 1.1,
-              duration: 0.4,
-              delay: 0.5,
-              ease: 'back.out(1.7)'
-            })
-          }
-
-          if (scenes[currentScene].id === 'moving') {
-            // Animate the travel path
-            const travelPath = sceneEl.querySelector('.travel-path')
-            if (travelPath) {
-              const length = (travelPath as SVGPathElement).getTotalLength()
-              gsap.set(travelPath, {
-                strokeDasharray: length,
-                strokeDashoffset: length
-              })
-              gsap.to(travelPath, {
-                strokeDashoffset: 0,
-                duration: 2,
-                delay: 0.7,
-                ease: 'power2.inOut'
-              })
-            }
-            
-            // Animate markers
-            gsap.from(sceneEl.querySelectorAll('.location-marker'), {
-              scale: 0,
-              opacity: 0,
-              duration: 0.3,
-              delay: 0.5,
-              stagger: 1.5,
-              ease: 'back.out(1.7)'
-            })
-          }
-
-          if (scenes[currentScene].id === 'berkeley-life') {
-            gsap.from(sceneEl.querySelectorAll('.activity-card'), {
-              scale: 0.8,
-              opacity: 0,
-              duration: 0.3,
-              delay: 0.5,
-              stagger: 0.05,
-              ease: 'power2.out'
-            })
-          }
-        } else {
-          // Fade out non-current scenes
-          gsap.to(sceneEl, {
-            opacity: 0,
-            visibility: 'hidden',
-            duration: 0.6,
-            ease: 'power2.inOut'
-          })
-        }
-      })
+    // Show/hide scenes instantly
+    scenes.forEach((_, index) => {
+      const sceneEl = scenesRef.current[index]
+      if (!sceneEl) return
+      
+      sceneEl.style.display = index === currentScene ? 'flex' : 'none'
     })
-
-    return () => ctx.revert()
   }, [currentScene])
 
   return (
@@ -537,7 +442,6 @@ function App() {
       {(currentComputer || currentPhone) && (
         <div className="fixed-computer-timeline">
           <div className="computer-indicator">
-            <div className="current-year">{currentYear}</div>
             {currentComputer && (
               <div className="current-computer">
                 <span className="computer-icon">💻</span>
@@ -557,15 +461,29 @@ function App() {
 
       {/* Main viewport with transitioning scenes */}
       <div className="viewport">
+        {/* Background layers for smooth transition */}
+        {scenes.map((scene, index) => (
+          <div
+            key={`bg-${scene.id}`}
+            className="background-layer"
+            style={{ 
+              background: scene.background,
+              opacity: index === currentScene ? 1 : 0
+            }}
+          />
+        ))}
         {scenes.map((scene, index) => (
           <div
             key={scene.id}
             ref={el => { if (el) scenesRef.current[index] = el }}
             className="scene"
-            style={{ background: scene.background }}
           >
             <div className="scene-wrapper">
-              <h1 className="scene-title">{scene.title}</h1>
+              <h1 className="scene-title" style={
+                darkBackgroundScenes.has(scene.id) 
+                  ? { color: 'white', opacity: 1 } 
+                  : undefined
+              }>{scene.title}</h1>
               {scene.content}
             </div>
           </div>
