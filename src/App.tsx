@@ -38,7 +38,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%)'
+      background: 'linear-gradient(135deg, #2a2a3e 0%, #1f1f2e 100%)'
     },
     {
       id: 'new-york',
@@ -51,7 +51,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #FFE5B4 0%, #FFCC99 100%)'
+      background: 'linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%)'
     },
     {
       id: 'moving',
@@ -61,49 +61,32 @@ function App() {
           <p className="narrative">From coast to coast, a new chapter begins in Berkeley, California</p>
           <div className="moving-animation">
             <div className="us-map-container">
-              <svg viewBox="0 0 800 400" className="us-outline">
-                {/* Simplified US outline */}
-                <path d="M 50 200 L 50 150 L 100 120 L 150 110 L 200 100 L 250 95 L 300 90 L 350 85 L 400 80 L 450 75 L 500 70 L 550 75 L 600 80 L 650 85 L 700 90 L 750 100 L 750 150 L 700 180 L 650 200 L 600 220 L 550 230 L 500 235 L 450 240 L 400 245 L 350 250 L 300 255 L 250 260 L 200 265 L 150 270 L 100 275 L 50 280 Z" 
+              <div className="us-map-bg"></div>
+              <svg viewBox="0 0 1000 589" className="us-overlay">
+                {/* Travel path from NYC to Berkeley */}
+                <path className="travel-path" 
+                      d="M 920 175 Q 600 240 172 258" 
                       fill="none" 
-                      stroke="#1a1a2e" 
-                      strokeWidth="2"
-                      opacity="0.3"
-                />
-                {/* Florida */}
-                <path d="M 650 230 L 680 250 L 690 280 L 670 290 L 650 270 Z" 
-                      fill="none" 
-                      stroke="#1a1a2e" 
-                      strokeWidth="2"
-                      opacity="0.3"
-                />
-                {/* California coast */}
-                <path d="M 50 150 L 30 180 L 25 220 L 30 250 L 50 280" 
-                      fill="none" 
-                      stroke="#1a1a2e" 
-                      strokeWidth="2"
-                      opacity="0.3"
-                />
-                {/* Travel path */}
-                <path className="travel-path" d="M 680 180 L 80 240" 
-                      fill="none" 
-                      stroke="#1a1a2e" 
-                      strokeWidth="3"
+                      stroke="#FF4444" 
+                      strokeWidth="4"
                       strokeDasharray="10 5"
                 />
+                
+                {/* Location dots */}
+                <circle cx="920" cy="175" r="10" fill="#FF4444" stroke="white" strokeWidth="3" className="location-dot-start" />
+                <circle cx="172" cy="258" r="10" fill="#FF4444" stroke="white" strokeWidth="3" className="location-dot-end" />
               </svg>
               <div className="location-marker nyc">
-                <span className="marker-dot"></span>
                 <span className="marker-label">New York</span>
               </div>
               <div className="location-marker berkeley">
-                <span className="marker-dot"></span>
                 <span className="marker-label">Berkeley</span>
               </div>
             </div>
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #B4E5FF 0%, #99CCFF 100%)'
+      background: 'linear-gradient(135deg, #e0f0f8 0%, #d0e5f5 100%)'
     },
     {
       id: 'montessori',
@@ -118,7 +101,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #FFB4B4 0%, #FF99CC 100%)'
+      background: 'linear-gradient(135deg, #f5e0e0 0%, #f0d5e5 100%)'
     },
     {
       id: 'berkeley-life',
@@ -144,7 +127,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #B4FFB4 0%, #99FF99 100%)',
+      background: 'linear-gradient(135deg, #e8f5e8 0%, #d5f0d5 100%)',
       computer: 'Apple IIgs'
     },
     {
@@ -171,7 +154,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #4A148C 0%, #7B1FA2 100%)',
+      background: 'linear-gradient(135deg, #3a3a5a 0%, #4a3a5a 100%)',
       computer: 'Toshiba Laptop → MacBook Pro',
       phone: 'Nokia 6230 → Motorola RAZR'
     },
@@ -207,7 +190,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #1A237E 0%, #283593 100%)',
+      background: 'linear-gradient(135deg, #2a3a4e 0%, #3a4a5e 100%)',
       computer: 'Linux Workstations + MacBook Pro',
       phone: 'BlackBerry Curve → iPhone 3G'
     },
@@ -236,7 +219,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #00695C 0%, #00897B 100%)',
+      background: 'linear-gradient(135deg, #2a4a4a 0%, #3a5a5a 100%)',
       computer: 'MacBook Pro 15"',
       phone: 'iPhone 4 → iPhone 4S'
     },
@@ -279,7 +262,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #E65100 0%, #F57C00 100%)',
+      background: 'linear-gradient(135deg, #3a4a5a 0%, #4a5a6a 100%)',
       computer: 'MacBook Pro 16" (M1 → M2)',
       phone: 'iPhone X → 11 Pro → 12 Pro → 13 Pro'
     },
@@ -316,7 +299,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #FF6F00 0%, #FF8F00 100%)',
+      background: 'linear-gradient(135deg, #4a3a2a 0%, #5a4a2a 100%)',
       computer: 'MacBook Pro M4 Max',
       phone: 'iPhone 15 Pro'
     },
@@ -350,7 +333,7 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%)'
+      background: 'linear-gradient(135deg, #1f1f2e 0%, #2a2a3e 100%)'
     }
   ]
 
