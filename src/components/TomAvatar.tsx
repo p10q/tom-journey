@@ -62,15 +62,15 @@ export function TomAvatar({ currentScene }: TomAvatarProps) {
     // Map scene indices to avatar states
     let targetState: string;
     
-    if (currentScene <= 4) {
+    if (currentScene <= 3) {
       targetState = 'childhood';
-    } else if (currentScene === 5) {
+    } else if (currentScene === 4) {
       targetState = 'college';
-    } else if (currentScene === 6) {
+    } else if (currentScene === 5) {
       targetState = 'chicago';
-    } else if (currentScene === 7) {
+    } else if (currentScene === 6) {
       targetState = 'startup';
-    } else if (currentScene === 8) {
+    } else if (currentScene >= 7) {
       targetState = 'amazon';
     } else {
       targetState = 'amazon';
@@ -357,8 +357,8 @@ export function TomAvatar({ currentScene }: TomAvatarProps) {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <svg 
         ref={svgRef}
-        width="120" 
-        height="120" 
+        width="100" 
+        height="100" 
         viewBox="-60 -60 120 120"
         style={{ overflow: 'visible' }}
       >
@@ -387,10 +387,6 @@ export function TomAvatar({ currentScene }: TomAvatarProps) {
         
         {renderShapes()}
       </svg>
-      
-      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-        <h2 style={{ margin: '0', fontSize: '0.9rem', fontWeight: '600' }}>{getStateLabel()}</h2>
-      </div>
     </div>
   );
 }

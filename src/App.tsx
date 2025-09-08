@@ -58,24 +58,8 @@ function App() {
       location: 'new-york'
     },
     {
-      id: 'montessori',
-      title: 'Berkeley Montessori',
-      content: (
-        <div className="scene-content montessori">
-          <p className="narrative">Learning and growing in a nurturing environment</p>
-          <div className="school-memories">
-            <div className="memory-item">📚 Hands-on learning</div>
-            <div className="memory-item">🎨 Creative exploration</div>
-            <div className="memory-item">👫 Making friends</div>
-          </div>
-        </div>
-      ),
-      background: 'linear-gradient(135deg, #f5e0e0 0%, #f0d5e5 100%)',
-      location: 'berkeley'
-    },
-    {
       id: 'berkeley-life',
-      title: 'Growing Up in Berkeley',
+      title: 'Grew Up in Berkeley',
       content: (
         <div className="scene-content berkeley">
           <div className="activities-grid">
@@ -91,7 +75,7 @@ function App() {
             </div>
             <div className="activity-card" data-activity="bmug">
               <span className="icon">💻</span>
-              <h3>Berkeley Mac User's Group</h3>
+              <h3>Berkeley Macintosh User's Group</h3>
               <p>Where the tech journey began</p>
             </div>
           </div>
@@ -132,7 +116,7 @@ function App() {
     },
     {
       id: 'chicago',
-      title: 'Chicago Trading Years',
+      title: 'Chicago Trading Firms',
       content: (
         <div className="scene-content chicago">
           <div className="trading-showcase">
@@ -169,7 +153,7 @@ function App() {
     },
     {
       id: 'silicon-valley',
-      title: 'Mobile Banking',
+      title: 'Intuit/NCR: Mobile Banking',
       content: (
         <div className="scene-content silicon-valley">
           <div className="mobile-showcase">
@@ -243,7 +227,7 @@ function App() {
     },
     {
       id: 'intercom-plus',
-      title: 'Intercom Plus',
+      title: 'Amazon Key: Intercom Plus',
       content: (
         <div className="scene-content intercom-plus">
           <div className="ai-development">
@@ -301,10 +285,6 @@ function App() {
                 <h3>Global Impact</h3>
                 <p>Technology for good</p>
               </div>
-            </div>
-            <div className="future-quote">
-              <p>"The best way to predict the future is to invent it"</p>
-              <span className="quote-author">- Alan Kay</span>
             </div>
           </div>
         </div>

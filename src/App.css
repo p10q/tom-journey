@@ -76,12 +76,12 @@ body {
 
 /* Override for dark background scenes */
 .scene:nth-child(1) .scene-title,   /* Tom Harada */
-.scene:nth-child(6) .scene-title,   /* Amherst College */
-.scene:nth-child(7) .scene-title,   /* Chicago Trading Years */
-.scene:nth-child(8) .scene-title,   /* Mobile Banking */
-.scene:nth-child(9) .scene-title,   /* Amazon Key */
-.scene:nth-child(10) .scene-title,  /* Intercom Plus */
-.scene:nth-child(11) .scene-title {  /* The Future */
+.scene:nth-child(5) .scene-title,   /* Amherst College */
+.scene:nth-child(6) .scene-title,   /* Chicago Trading Firms */
+.scene:nth-child(7) .scene-title,   /* Intuit/NCR: Mobile Banking */
+.scene:nth-child(8) .scene-title,   /* Amazon Key */
+.scene:nth-child(9) .scene-title,   /* Amazon Key: Intercom Plus */
+.scene:nth-child(10) .scene-title {  /* The Future */
   color: white !important;
   opacity: 1 !important;
 }
