@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TomAvatar } from './components/TomAvatar'
+import { USMapIndicator } from './components/USMapIndicator'
 import './App.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -14,6 +15,7 @@ interface Scene {
   background: string
   computer?: string
   phone?: string
+  location?: 'new-york' | 'berkeley' | 'amherst' | 'chicago' | 'sf-peninsula'
 }
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
   const [currentScene, setCurrentScene] = useState(0)
   const [currentComputer, setCurrentComputer] = useState<string>('')
   const [currentPhone, setCurrentPhone] = useState<string>('')
+  const [currentLocation, setCurrentLocation] = useState<string>('')
   const scenesRef = useRef<HTMLDivElement[]>([])
 
   // Define which scenes have dark backgrounds (need white text)
@@ -51,42 +54,8 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%)'
-    },
-    {
-      id: 'moving',
-      title: 'Age 5: Moving West',
-      content: (
-        <div className="scene-content moving">
-          <p className="narrative">From coast to coast, a new chapter begins in Berkeley, California</p>
-          <div className="moving-animation">
-            <div className="us-map-container">
-              <div className="us-map-bg"></div>
-              <svg viewBox="0 0 1000 589" className="us-overlay">
-                {/* Travel path from NYC to Berkeley */}
-                <path className="travel-path" 
-                      d="M 920 175 Q 600 240 172 258" 
-                      fill="none" 
-                      stroke="#FF4444" 
-                      strokeWidth="4"
-                      strokeDasharray="10 5"
-                />
-                
-                {/* Location dots */}
-                <circle cx="920" cy="175" r="10" fill="#FF4444" stroke="white" strokeWidth="3" className="location-dot-start" />
-                <circle cx="172" cy="258" r="10" fill="#FF4444" stroke="white" strokeWidth="3" className="location-dot-end" />
-              </svg>
-              <div className="location-marker nyc">
-                <span className="marker-label">New York</span>
-              </div>
-              <div className="location-marker berkeley">
-                <span className="marker-label">Berkeley</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-      background: 'linear-gradient(135deg, #e0f0f8 0%, #d0e5f5 100%)'
+      background: 'linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%)',
+      location: 'new-york'
     },
     {
       id: 'montessori',
@@ -101,7 +70,8 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #f5e0e0 0%, #f0d5e5 100%)'
+      background: 'linear-gradient(135deg, #f5e0e0 0%, #f0d5e5 100%)',
+      location: 'berkeley'
     },
     {
       id: 'berkeley-life',
@@ -128,7 +98,8 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #e8f5e8 0%, #d5f0d5 100%)',
-      computer: 'Apple IIgs'
+      computer: 'Apple IIgs',
+      location: 'berkeley'
     },
     {
       id: 'amherst',
@@ -156,7 +127,8 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #3a3a5a 0%, #4a3a5a 100%)',
       computer: 'Toshiba Laptop → MacBook Pro',
-      phone: 'Nokia 6230 → Motorola RAZR'
+      phone: 'Nokia 6230 → Motorola RAZR',
+      location: 'amherst'
     },
     {
       id: 'chicago',
@@ -192,7 +164,8 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #2a3a4e 0%, #3a4a5e 100%)',
       computer: 'Linux Workstations + MacBook Pro',
-      phone: 'BlackBerry Curve → iPhone 3G'
+      phone: 'BlackBerry Curve → iPhone 3G',
+      location: 'chicago'
     },
     {
       id: 'silicon-valley',
@@ -221,7 +194,8 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #2a4a4a 0%, #3a5a5a 100%)',
       computer: 'MacBook Pro 15"',
-      phone: 'iPhone 4 → iPhone 4S'
+      phone: 'iPhone 4 → iPhone 4S',
+      location: 'sf-peninsula'
     },
     {
       id: 'amazon-key',
@@ -264,7 +238,8 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #3a4a5a 0%, #4a5a6a 100%)',
       computer: 'MacBook Pro 16" (M1 → M2)',
-      phone: 'iPhone X → 11 Pro → 12 Pro → 13 Pro'
+      phone: 'iPhone X → 11 Pro → 12 Pro → 13 Pro',
+      location: 'sf-peninsula'
     },
     {
       id: 'intercom-plus',
@@ -301,7 +276,8 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #4a4a5a 0%, #5a5a6a 100%)',
       computer: 'MacBook Pro M4 Max',
-      phone: 'iPhone 15 Pro'
+      phone: 'iPhone 15 Pro',
+      location: 'sf-peninsula'
     },
     {
       id: 'future',
@@ -333,7 +309,8 @@ function App() {
           </div>
         </div>
       ),
-      background: 'linear-gradient(135deg, #1f1f2e 0%, #2a2a3e 100%)'
+      background: 'linear-gradient(135deg, #1f1f2e 0%, #2a2a3e 100%)',
+      location: 'sf-peninsula'
     }
   ]
 
@@ -373,11 +350,12 @@ function App() {
     }
   }, [currentScene])
 
-  // Set device info when scene changes
+  // Set device info and location when scene changes
   useEffect(() => {
     const scene = scenes[currentScene]
     setCurrentComputer(scene.computer || '')
     setCurrentPhone(scene.phone || '')
+    setCurrentLocation(scene.location || '')
     
     // Set body data attribute for CSS styling
     document.body.setAttribute('data-scene', scene.id)
@@ -440,6 +418,9 @@ function App() {
           </div>
         </div>
       )}
+
+      {/* Fixed US Map Indicator */}
+      <USMapIndicator currentLocation={currentLocation} currentScene={currentScene} />
 
 
       {/* Main viewport with transitioning scenes */}
