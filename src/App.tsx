@@ -110,8 +110,8 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #3a3a5a 0%, #4a3a5a 100%)',
-      computer: 'Toshiba Laptop → MacBook Pro',
-      phone: 'Nokia 6230 → Motorola RAZR',
+      computer: 'Toshiba Laptop',
+      phone: 'Nokia 6230',
       location: 'amherst'
     },
     {
@@ -147,8 +147,8 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #2a3a4e 0%, #3a4a5e 100%)',
-      computer: 'Linux Workstations + MacBook Pro',
-      phone: 'BlackBerry Curve → iPhone 3G',
+      computer: 'Linux Workstations',
+      phone: 'BlackBerry',
       location: 'chicago'
     },
     {
