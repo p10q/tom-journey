@@ -80,8 +80,7 @@ body {
 .scene:nth-child(6) .scene-title,   /* Chicago Trading Firms */
 .scene:nth-child(7) .scene-title,   /* Intuit/NCR: Mobile Banking */
 .scene:nth-child(8) .scene-title,   /* Amazon Key */
-.scene:nth-child(9) .scene-title,   /* Amazon Key: Intercom Plus */
-.scene:nth-child(10) .scene-title {  /* The Future */
+.scene:nth-child(9) .scene-title {  /* The Future */
   color: white !important;
   opacity: 1 !important;
 }
@@ -817,21 +816,63 @@ body[data-scene="future"] .location-label {
   background: #2196F3;
 }
 
-.client-logos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
+.banks-grid-container {
+  position: relative;
+  width: 100%;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 2rem auto;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.logo-placeholder {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 1.5rem;
-  border-radius: 10px;
+.banks-grid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 0.5rem;
+  padding: 1rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bank-item {
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: scale(0);
+  animation: bankAppear 0.5s ease-out forwards;
+}
+
+@keyframes bankAppear {
+  to {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+.banks-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  color: #00695C;
-  font-weight: 600;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.banks-overlay h3 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 700;
+}
+
+.banks-overlay p {
+  margin: 0.5rem 0 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
 }
 
 /* Amazon Key styles */
@@ -944,6 +985,79 @@ body[data-scene="future"] .location-label {
 .app-card p {
   color: #666;
   font-size: 0.9rem;
+}
+
+/* Combined Amazon Key styles */
+.amazon-combined {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.delivery-section {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-label {
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  opacity: 0.9;
+}
+
+.products-and-tech {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.products-section {
+  width: 100%;
+}
+
+.intercom-section {
+  width: 100%;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.tech-stack-grid.compact {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.tech-stack-grid.compact .tech-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.tech-stack-grid.compact .tech-item h4 {
+  font-size: 0.9rem;
+  color: #3a4a5a;
+  margin: 0.3rem 0;
+}
+
+.tech-stack-grid.compact .tech-item p {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.tech-stack-grid.compact .tech-item .icon {
+  font-size: 1.8rem;
 }
 
 /* Intercom Plus AI styles */

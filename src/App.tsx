@@ -48,7 +48,6 @@ function App() {
       title: 'Born in New York',
       content: (
         <div className="scene-content new-york">
-          <p className="narrative">The story begins in the city that never sleeps...</p>
           <div className="pizza-love">
             <span className="emoji pizza">🍕</span>
           </div>
@@ -66,23 +65,20 @@ function App() {
             <div className="activity-card" data-activity="biking">
               <span className="icon">🚴</span>
               <h3>Biking</h3>
-              <p>Exploring the hills and neighborhoods</p>
             </div>
             <div className="activity-card" data-activity="tennis">
               <span className="icon">🎾</span>
               <h3>Tennis</h3>
-              <p>Serving up good times on the court</p>
             </div>
             <div className="activity-card" data-activity="bmug">
               <span className="icon">💻</span>
               <h3>Berkeley Macintosh User's Group</h3>
-              <p>Where the tech journey began</p>
             </div>
           </div>
         </div>
       ),
       background: 'linear-gradient(135deg, #e8f5e8 0%, #d5f0d5 100%)',
-      computer: 'Apple IIgs',
+      computer: 'Apple IIgs → Macintosh LC III → Gateway 2000',
       location: 'berkeley'
     },
     {
@@ -102,7 +98,7 @@ function App() {
               <p>Translating classical texts</p>
             </div>
             <div className="study-card">
-              <span className="icon">🧮</span>
+              <span className="icon" style={{ color: '#2a2a3e' }}>∑</span>
               <h3>Mathematics</h3>
               <p>Exploring abstract concepts</p>
             </div>
@@ -167,11 +163,18 @@ function App() {
               <div className="tech-badge ios">iOS Development</div>
               <div className="tech-badge web">Mobile Web</div>
             </div>
-            <div className="client-logos">
-              <div className="logo-placeholder">Bank 1</div>
-              <div className="logo-placeholder">Bank 2</div>
-              <div className="logo-placeholder">Bank 3</div>
-              <div className="logo-placeholder">Bank 4</div>
+            <div className="banks-grid-container">
+              <div className="banks-grid">
+                {[...Array(800)].map((_, i) => (
+                  <div key={i} className="bank-item" style={{ animationDelay: `${i * 0.01}s` }}>
+                    🏦
+                  </div>
+                ))}
+              </div>
+              <div className="banks-overlay">
+                <h3>800+ Banks</h3>
+                <p>Nationwide Financial Institutions</p>
+              </div>
             </div>
           </div>
         </div>
@@ -183,84 +186,75 @@ function App() {
     },
     {
       id: 'amazon-key',
-      title: 'Amazon Key: Secure Delivery',
+      title: 'Amazon Key',
       content: (
         <div className="scene-content amazon-key">
-          <div className="delivery-and-apps">
-            <div className="delivery-visual">
+          <div className="amazon-combined">
+            <div className="delivery-section">
               <div className="package-flow">
                 <div className="package">📦</div>
                 <div className="flow-line"></div>
                 <div className="destination">🏠</div>
               </div>
-              <p className="delivery-text">Secure package delivery solutions</p>
+              <p className="section-label">Secure Delivery & Access Solutions</p>
             </div>
-            <div className="apps-grid compact">
-              <div className="app-card">
-                <span className="app-icon">🔑</span>
-                <h3>Amazon Key</h3>
-                <p>Indoor delivery access</p>
+            <div className="products-and-tech">
+              <div className="products-section">
+                <div className="apps-grid compact">
+                  <div className="app-card">
+                    <span className="app-icon">🔑</span>
+                    <h3>Amazon Key</h3>
+                    <p>Indoor delivery access</p>
+                  </div>
+                  <div className="app-card">
+                    <span className="app-icon">🚚</span>
+                    <h3>Amazon Flex</h3>
+                    <p>Driver delivery app</p>
+                  </div>
+                  <div className="app-card">
+                    <span className="app-icon">🔔</span>
+                    <h3>Ring</h3>
+                    <p>Home security integration</p>
+                  </div>
+                  <div className="app-card">
+                    <span className="app-icon">🛒</span>
+                    <h3>Amazon Shopping</h3>
+                    <p>Core shopping experience</p>
+                  </div>
+                </div>
               </div>
-              <div className="app-card">
-                <span className="app-icon">🚚</span>
-                <h3>Amazon Flex</h3>
-                <p>Driver delivery app</p>
-              </div>
-              <div className="app-card">
-                <span className="app-icon">🔔</span>
-                <h3>Ring</h3>
-                <p>Home security integration</p>
-              </div>
-              <div className="app-card">
-                <span className="app-icon">🛒</span>
-                <h3>Amazon Shopping</h3>
-                <p>Core shopping experience</p>
+              <div className="intercom-section">
+                <h3 className="section-subtitle">Intercom Plus</h3>
+                <div className="tech-stack-grid compact">
+                  <div className="tech-item">
+                    <span className="icon">💻</span>
+                    <h4>Claude</h4>
+                    <p>CLI-Based AI development</p>
+                  </div>
+                  <div className="tech-item">
+                    <span className="icon">🤖</span>
+                    <h4>Android / Jetpack Compose</h4>
+                    <p>Modern mobile development</p>
+                  </div>
+                  <div className="tech-item">
+                    <span className="icon">📹</span>
+                    <h4>WebRTC</h4>
+                    <p>Real-time video communication</p>
+                  </div>
+                  <div className="tech-item">
+                    <span className="icon">🌐</span>
+                    <h4>IoT Core</h4>
+                    <p>Connected device management</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       ),
       background: 'linear-gradient(135deg, #3a4a5a 0%, #4a5a6a 100%)',
-      computer: 'MacBook Pro 16" (M1 → M2)',
-      phone: 'iPhone X → 11 Pro → 12 Pro → 13 Pro',
-      location: 'sf-peninsula'
-    },
-    {
-      id: 'intercom-plus',
-      title: 'Amazon Key: Intercom Plus',
-      content: (
-        <div className="scene-content intercom-plus">
-          <div className="ai-development">
-            <div className="code-collaboration">
-              <div className="ai-assistant">
-                <span className="ai-icon">🤖</span>
-                <p>AI Pair Programming</p>
-              </div>
-              <div className="flow-connector">⚡</div>
-              <div className="development-speed">
-                <span className="speed-icon">🚀</span>
-                <p>10x Development Speed</p>
-              </div>
-            </div>
-            <div className="tech-stack-grid">
-              <div className="tech-item">
-                <span className="icon">💻</span>
-                <h4>Claude Code</h4>
-                <p>AI-powered development</p>
-              </div>
-              <div className="tech-item">
-                <span className="icon">🤖</span>
-                <h4>Android / Jetpack Compose</h4>
-                <p>Modern mobile development</p>
-              </div>
-            </div>
-            <p className="project-description">Revolutionizing building access through AI-accelerated development</p>
-          </div>
-        </div>
-      ),
-      background: 'linear-gradient(135deg, #4a4a5a 0%, #5a5a6a 100%)',
-      computer: 'MacBook Pro M4 Max',
-      phone: 'iPhone 15 Pro',
+      computer: 'MacBook Pro 16" (M1 → M2 → M4 Max)',
+      phone: 'iPhone X → 15 Pro',
       location: 'sf-peninsula'
     },
     {
