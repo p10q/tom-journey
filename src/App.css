@@ -411,6 +411,8 @@ body[data-scene="future"] .location-label {
 .location-overlay circle {
   mix-blend-mode: normal !important;
   paint-order: stroke fill !important;
+  transform-origin: center;
+  transform: scale(2);
 }
 
 .location-active {
@@ -1466,8 +1468,7 @@ body[data-scene="future"] .location-label {
   }
   
   .skill-tag {
-    padding: 0.3rem 0.7rem;
-    font-size: 0.75rem;
+    display: none;
   }
   
   /* Mobile banking section */
@@ -1532,6 +1533,11 @@ body[data-scene="future"] .location-label {
     font-size: 2.5rem;
   }
   
+  /* Hide Intercom Plus section on mobile */
+  .intercom-section {
+    display: none;
+  }
+  
   .package-flow {
     gap: 1rem;
     margin-bottom: 1rem;
@@ -1563,22 +1569,22 @@ body[data-scene="future"] .location-label {
   }
   
   .apps-grid.compact .app-card {
-    width: 100px;
-    padding: 0.7rem;
+    width: 85px;
+    padding: 0.5rem;
   }
   
   .apps-grid.compact .app-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.3rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
   }
   
   .apps-grid.compact h3 {
-    font-size: 0.85rem;
-    margin: 0.2rem 0;
+    font-size: 0.7rem;
+    margin: 0.15rem 0;
   }
   
   .apps-grid.compact p {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
   }
   
   /* Tech stack grid */

@@ -30,7 +30,7 @@ export function USMapIndicator({ currentLocation }: USMapIndicatorProps) {
               <circle 
                 cx="348" 
                 cy="263" 
-                r="10" 
+                r="20" 
                 fill="#FF0000" 
                 stroke="#FFFFFF" 
                 strokeWidth="3" 
@@ -40,7 +40,7 @@ export function USMapIndicator({ currentLocation }: USMapIndicatorProps) {
               <circle 
                 cx="187" 
                 cy="280" 
-                r="10" 
+                r="20" 
                 fill="#FF0000" 
                 stroke="#FFFFFF" 
                 strokeWidth="3" 
@@ -50,7 +50,7 @@ export function USMapIndicator({ currentLocation }: USMapIndicatorProps) {
               <circle 
                 cx="343" 
                 cy="258" 
-                r="10" 
+                r="20" 
                 fill="#FF0000" 
                 stroke="#FFFFFF" 
                 strokeWidth="3" 
@@ -60,7 +60,7 @@ export function USMapIndicator({ currentLocation }: USMapIndicatorProps) {
               <circle 
                 cx="305" 
                 cy="270" 
-                r="10" 
+                r="20" 
                 fill="#FF0000" 
                 stroke="#FFFFFF" 
                 strokeWidth="3" 
