@@ -37,7 +37,10 @@ function App() {
         <div className="scene-content intro">
           <div className="scroll-indicator" onClick={() => setCurrentScene(1)}>
             <div className="arrow-right">→</div>
-            <p style={{ color: 'white', fontSize: '0.9rem', marginTop: '0.5rem', opacity: 0.7 }}>Use arrow keys to navigate</p>
+            <p style={{ color: 'white', fontSize: '0.9rem', marginTop: '0.5rem', opacity: 0.7 }}>
+              <span className="desktop-hint">Use arrow keys to navigate</span>
+              <span className="mobile-hint">Swipe to navigate</span>
+            </p>
           </div>
         </div>
       ),
@@ -288,6 +291,11 @@ function App() {
     }
   ]
 
+  // Touch handling state
+  const touchStartX = useRef<number>(0)
+  const touchStartY = useRef<number>(0)
+  const isSwiping = useRef<boolean>(false)
+
   useEffect(() => {
     // Handle keyboard navigation
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -315,12 +323,62 @@ function App() {
       }
     }
 
+    // Handle touch events for swipe navigation
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX.current = e.touches[0].clientX
+      touchStartY.current = e.touches[0].clientY
+      isSwiping.current = true
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isSwiping.current) return
+
+      const currentX = e.touches[0].clientX
+      const currentY = e.touches[0].clientY
+      const diffX = touchStartX.current - currentX
+      const diffY = touchStartY.current - currentY
+
+      // Only handle horizontal swipes
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        e.preventDefault()
+      }
+    }
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!isSwiping.current) return
+
+      const touchEndX = e.changedTouches[0].clientX
+      const touchEndY = e.changedTouches[0].clientY
+      const diffX = touchStartX.current - touchEndX
+      const diffY = touchStartY.current - touchEndY
+      const swipeThreshold = 50
+
+      // Only handle horizontal swipes
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
+        if (diffX > 0 && currentScene < scenes.length - 1) {
+          // Swipe left - go to next scene
+          setCurrentScene(currentScene + 1)
+        } else if (diffX < 0 && currentScene > 0) {
+          // Swipe right - go to previous scene
+          setCurrentScene(currentScene - 1)
+        }
+      }
+
+      isSwiping.current = false
+    }
+
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('wheel', handleWheel, { passive: false })
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchmove', handleTouchMove, { passive: false })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleTouchEnd)
     }
   }, [currentScene])
 

@@ -16,6 +16,7 @@ body {
   top: 0;
   left: 0;
   overflow: hidden;
+  touch-action: pan-y pinch-zoom;
 }
 
 /* Fixed viewport */
@@ -184,6 +185,25 @@ body[data-scene="future"] .location-label {
 .arrow-right {
   font-size: 1.5rem;
   animation: slide 2s infinite;
+}
+
+/* Show/hide navigation hints based on device */
+.desktop-hint {
+  display: inline;
+}
+
+.mobile-hint {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-hint {
+    display: none;
+  }
+  
+  .mobile-hint {
+    display: inline;
+  }
 }
 
 @keyframes slide {
