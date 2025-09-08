@@ -400,7 +400,7 @@ function App() {
       )}
 
       {/* Fixed US Map Indicator */}
-      <USMapIndicator currentLocation={currentLocation} currentScene={currentScene} />
+      <USMapIndicator currentLocation={currentLocation} />
 
 
       {/* Main viewport with transitioning scenes */}

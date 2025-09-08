@@ -255,16 +255,6 @@ export function TomAvatar({ currentScene }: TomAvatarProps) {
     };
   }, [state.value]);
 
-  const getStateLabel = () => {
-    switch (state.value) {
-      case 'childhood': return 'Childhood';
-      case 'college': return 'College';
-      case 'chicago': return 'Chicago';
-      case 'startup': return 'Startup';
-      case 'amazon': return 'Amazon';
-      default: return '';
-    }
-  };
 
   const renderShapes = () => {
     switch (state.value) {

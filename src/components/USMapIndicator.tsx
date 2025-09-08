@@ -1,11 +1,9 @@
-import React from 'react'
 
 interface USMapIndicatorProps {
   currentLocation: string
-  currentScene: number
 }
 
-export function USMapIndicator({ currentLocation, currentScene }: USMapIndicatorProps) {
+export function USMapIndicator({ currentLocation }: USMapIndicatorProps) {
 
   if (!currentLocation) return null
 
