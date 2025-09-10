@@ -31,7 +31,7 @@ function App() {
   const scenesRef = useRef<HTMLDivElement[]>([])
 
   // Define which scenes have dark backgrounds (need white text)
-  const darkBackgroundScenes = new Set(['intro', 'amherst', 'chicago', 'silicon-valley', 'amazon-key', 'intercom-plus', 'future'])
+  const darkBackgroundScenes = new Set(['intro', 'amherst', 'chicago', 'silicon-valley', 'amazon-key', 'future'])
 
   const scenes: Scene[] = [
     {
@@ -210,54 +210,27 @@ function App() {
               </div>
               <p className="section-label">Secure Delivery & Access Solutions</p>
             </div>
-            <div className="products-and-tech">
-              <div className="products-section">
-                <div className="apps-grid compact">
-                  <div className="app-card">
-                    <span className="app-icon">🔑</span>
-                    <h3>Amazon Key</h3>
-                    <p>Indoor delivery access</p>
-                  </div>
-                  <div className="app-card">
-                    <span className="app-icon">🚚</span>
-                    <h3>Amazon Flex</h3>
-                    <p>Driver delivery app</p>
-                  </div>
-                  <div className="app-card">
-                    <span className="app-icon">🔔</span>
-                    <h3>Ring</h3>
-                    <p>Home security integration</p>
-                  </div>
-                  <div className="app-card">
-                    <span className="app-icon">🛒</span>
-                    <h3>Amazon Shopping</h3>
-                    <p>Core shopping experience</p>
-                  </div>
+            <div className="products-section">
+              <div className="apps-grid-square">
+                <div className="app-card">
+                  <span className="app-icon">🔑</span>
+                  <h3>Amazon Key</h3>
+                  <p>Indoor delivery access</p>
                 </div>
-              </div>
-              <div className="intercom-section">
-                <h3 className="section-subtitle">Intercom Plus</h3>
-                <div className="tech-stack-grid compact">
-                  <div className="tech-item">
-                    <span className="icon">💻</span>
-                    <h4>Claude</h4>
-                    <p>CLI-Based AI development</p>
-                  </div>
-                  <div className="tech-item">
-                    <span className="icon">🤖</span>
-                    <h4>Android / Jetpack Compose</h4>
-                    <p>Modern mobile development</p>
-                  </div>
-                  <div className="tech-item">
-                    <span className="icon">📹</span>
-                    <h4>WebRTC</h4>
-                    <p>Real-time video communication</p>
-                  </div>
-                  <div className="tech-item">
-                    <span className="icon">🌐</span>
-                    <h4>IoT Core</h4>
-                    <p>Connected device management</p>
-                  </div>
+                <div className="app-card">
+                  <span className="app-icon">🚚</span>
+                  <h3>Amazon Flex</h3>
+                  <p>Driver delivery app</p>
+                </div>
+                <div className="app-card">
+                  <span className="app-icon">🔔</span>
+                  <h3>Ring</h3>
+                  <p>Home security integration</p>
+                </div>
+                <div className="app-card">
+                  <span className="app-icon">🛒</span>
+                  <h3>Amazon Shopping</h3>
+                  <p>Core shopping experience</p>
                 </div>
               </div>
             </div>

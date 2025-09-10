@@ -142,14 +142,6 @@ body[data-scene="amazon-key"] .current-phone,
 body[data-scene="amazon-key"] .current-llm,
 body[data-scene="amazon-key"] .personal-status-indicator,
 body[data-scene="amazon-key"] .status-text,
-body[data-scene="intercom-plus"] .fixed-avatar h2,
-body[data-scene="intercom-plus"] .location-label,
-body[data-scene="intercom-plus"] .computer-indicator,
-body[data-scene="intercom-plus"] .current-computer,
-body[data-scene="intercom-plus"] .current-phone,
-body[data-scene="intercom-plus"] .current-llm,
-body[data-scene="intercom-plus"] .personal-status-indicator,
-body[data-scene="intercom-plus"] .status-text,
 body[data-scene="future"] .fixed-avatar h2,
 body[data-scene="future"] .location-label,
 body[data-scene="future"] .computer-indicator,
@@ -224,9 +216,9 @@ body[data-scene="future"] .status-text {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 1rem;
   width: 100%;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 /* Dynamic content scaling to prevent cutoff */
@@ -1290,7 +1282,7 @@ body[data-scene="future"] .status-text {
 
 .app-card {
   background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -1302,41 +1294,74 @@ body[data-scene="future"] .status-text {
 }
 
 .app-card .app-icon {
-  font-size: 3rem;
+  font-size: 2.5rem;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .app-card h3 {
   color: #E65100;
-  font-size: 1.3rem;
-  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  margin: 0.4rem 0;
 }
 
 .app-card p {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* Combined Amazon Key styles */
 .amazon-combined {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
   width: 100%;
-  padding: 0 0 2rem 0;
+  padding: 0;
+}
+
+/* Square grid for Amazon Key apps */
+.apps-grid-square {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.apps-grid-square .app-card {
+  padding: 1.2rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.apps-grid-square .app-card .app-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.apps-grid-square .app-card h3 {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+}
+
+.apps-grid-square .app-card p {
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 .delivery-section {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .section-label {
   color: white;
-  font-size: 1.1rem;
-  margin-top: 1.5rem;
+  font-size: 1rem;
+  margin-top: 1rem;
   opacity: 0.9;
 }
 
@@ -1351,18 +1376,6 @@ body[data-scene="future"] .status-text {
 
 .products-section {
   width: 100%;
-}
-
-.intercom-section {
-  width: 100%;
-  text-align: center;
-}
-
-.section-subtitle {
-  color: white;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
 }
 
 .tech-stack-grid.compact {
@@ -1395,12 +1408,7 @@ body[data-scene="future"] .status-text {
   font-size: 1.8rem;
 }
 
-/* Intercom Plus AI styles */
-.scene[style*="FF6F00"] .scene-title,
-.scene[style*="FF6F00"] .scene-subtitle,
-.scene[style*="FF6F00"] .project-description {
-  color: white;
-}
+/* Intercom Plus AI styles - removed */
 
 .ai-development {
   margin-top: 2rem;
@@ -1772,13 +1780,34 @@ body[data-scene="future"] .status-text {
   
   /* Amazon Key section */
   .package, .destination {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
-  /* Hide Intercom Plus section on mobile */
-  .intercom-section {
-    display: none;
+  /* Amazon Key square grid on mobile */
+  .apps-grid-square {
+    gap: 0.6rem;
+    max-width: 300px;
   }
+  
+  .apps-grid-square .app-card {
+    padding: 0.7rem;
+  }
+  
+  .apps-grid-square .app-card .app-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .apps-grid-square .app-card h3 {
+    font-size: 0.8rem;
+    margin: 0.2rem 0;
+  }
+  
+  .apps-grid-square .app-card p {
+    font-size: 0.65rem;
+    line-height: 1.2;
+  }
+  
   
   .package-flow {
     gap: 1rem;
@@ -1796,8 +1825,17 @@ body[data-scene="future"] .status-text {
   }
   
   .section-label {
-    font-size: 0.9rem;
-    margin-top: 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Reduce spacing in Amazon section on mobile */
+  .amazon-combined {
+    gap: 0.8rem;
+  }
+  
+  .delivery-section {
+    margin-bottom: 0.3rem;
   }
   
   .section-subtitle {
