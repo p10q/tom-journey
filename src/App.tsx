@@ -15,6 +15,8 @@ interface Scene {
   background: string
   computer?: string
   phone?: string
+  llm?: string
+  personalStatus?: string
   location?: 'new-york' | 'berkeley' | 'amherst' | 'chicago' | 'sf-peninsula'
 }
 
@@ -23,6 +25,8 @@ function App() {
   const [currentScene, setCurrentScene] = useState(0)
   const [currentComputer, setCurrentComputer] = useState<string>('')
   const [currentPhone, setCurrentPhone] = useState<string>('')
+  const [currentLLM, setCurrentLLM] = useState<string>('')
+  const [currentPersonalStatus, setCurrentPersonalStatus] = useState<string>('')
   const [currentLocation, setCurrentLocation] = useState<string>('')
   const scenesRef = useRef<HTMLDivElement[]>([])
 
@@ -57,6 +61,7 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%)',
+      personalStatus: 'Son',
       location: 'new-york'
     },
     {
@@ -64,7 +69,7 @@ function App() {
       title: 'Grew Up in Berkeley',
       content: (
         <div className="scene-content berkeley">
-          <div className="activities-grid">
+          <div className="activities-grid three-card-grid">
             <div className="activity-card" data-activity="biking">
               <span className="icon">🚴</span>
               <h3>Biking</h3>
@@ -82,6 +87,7 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #e8f5e8 0%, #d5f0d5 100%)',
       computer: 'Apple IIgs → Macintosh LC III → Gateway 2000',
+      personalStatus: 'Son',
       location: 'berkeley'
     },
     {
@@ -89,7 +95,7 @@ function App() {
       title: 'Amherst College',
       content: (
         <div className="scene-content amherst">
-          <div className="college-grid">
+          <div className="college-grid three-card-grid">
             <div className="study-card">
               <span className="icon">📝</span>
               <h3>Writing Essays</h3>
@@ -111,6 +117,7 @@ function App() {
       background: 'linear-gradient(135deg, #3a3a5a 0%, #4a3a5a 100%)',
       computer: 'Toshiba Laptop',
       phone: 'Nokia 6230',
+      personalStatus: 'Son',
       location: 'amherst'
     },
     {
@@ -148,6 +155,7 @@ function App() {
       background: 'linear-gradient(135deg, #2a3a4e 0%, #3a4a5e 100%)',
       computer: 'Linux Workstations',
       phone: 'BlackBerry',
+      personalStatus: 'Son, Dating',
       location: 'chicago'
     },
     {
@@ -185,6 +193,7 @@ function App() {
       background: 'linear-gradient(135deg, #2a4a4a 0%, #3a5a5a 100%)',
       computer: 'MacBook Pro 15"',
       phone: 'iPhone 4 → iPhone 4S',
+      personalStatus: 'Husband, Son',
       location: 'sf-peninsula'
     },
     {
@@ -256,8 +265,10 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #3a4a5a 0%, #4a5a6a 100%)',
-      computer: 'MacBook Pro 16" (M1 → M2 → M4 Max)',
-      phone: 'iPhone X → 15 Pro',
+      computer: 'MacBook Pro 14" (M1 → M2 → M4 Max)',
+      phone: 'iPhone X → 16 Pro Max',
+      llm: 'Anthropic Claude 4',
+      personalStatus: 'Father, Husband, Son',
       location: 'sf-peninsula'
     },
     {
@@ -266,21 +277,21 @@ function App() {
       content: (
         <div className="scene-content future">
           <div className="future-vision">
-            <div className="future-elements">
+            <div className="future-elements three-card-grid">
               <div className="future-item">
                 <span className="future-icon">🌟</span>
-                <h3>Building Products</h3>
-                <p>Creating tools that matter</p>
+                <h3>Build Products</h3>
+                <p>Create tools that matter</p>
               </div>
               <div className="future-item">
                 <span className="future-icon">🤝</span>
-                <h3>Mentoring</h3>
-                <p>Helping others grow</p>
+                <h3>Mentor</h3>
+                <p>Help others grow</p>
               </div>
               <div className="future-item">
                 <span className="future-icon">🌍</span>
-                <h3>Global Impact</h3>
-                <p>Technology for good</p>
+                <h3>Make Global Impact</h3>
+                <p>Use technology for good</p>
               </div>
             </div>
           </div>
@@ -387,6 +398,8 @@ function App() {
     const scene = scenes[currentScene]
     setCurrentComputer(scene.computer || '')
     setCurrentPhone(scene.phone || '')
+    setCurrentLLM(scene.llm || '')
+    setCurrentPersonalStatus(scene.personalStatus || '')
     setCurrentLocation(scene.location || '')
     
     // Set body data attribute for CSS styling
@@ -432,7 +445,7 @@ function App() {
       )}
 
       {/* Fixed Device Timeline */}
-      {(currentComputer || currentPhone) && (
+      {(currentComputer || currentPhone || currentLLM) && (
         <div className="fixed-computer-timeline">
           <div className="computer-indicator">
             {currentComputer && (
@@ -447,12 +460,28 @@ function App() {
                 <span className="phone-name">{currentPhone}</span>
               </div>
             )}
+            {currentLLM && (
+              <div className="current-llm">
+                <span className="llm-icon">⚡</span>
+                <span className="llm-name">{currentLLM}</span>
+              </div>
+            )}
           </div>
         </div>
       )}
 
       {/* Fixed US Map Indicator */}
       <USMapIndicator currentLocation={currentLocation} />
+
+      {/* Fixed Personal Status */}
+      {currentPersonalStatus && (
+        <div className="fixed-personal-status">
+          <div className="personal-status-indicator">
+            <span className="status-icon">👤</span>
+            <span className="status-text">{currentPersonalStatus}</span>
+          </div>
+        </div>
+      )}
 
 
       {/* Main viewport with transitioning scenes */}

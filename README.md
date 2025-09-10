@@ -9,3 +9,38 @@ This is an experiment in designing in code using Claude Code. Currently taking S
 - React + TypeScript + Vite
 - Claude Code for development assistance
 - Direct code-based animation approach
+
+## Running Locally
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/p10q/tom-journey.git
+cd tom-journey
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+### Development
+
+To start the development server:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173` (or another port if 5173 is in use).
+
+### Other Scripts
+
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint for code linting

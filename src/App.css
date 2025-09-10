@@ -52,21 +52,36 @@ body {
   justify-content: center;
   color: white;
   z-index: 1;
+  padding: min(100px, 12vh) min(240px, 15vw) min(90px, 10vh) min(240px, 15vw);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .scene-wrapper {
-  max-width: 1000px;
-  width: 90%;
+  max-width: 800px;
+  width: 100%;
   text-align: center;
-  padding: 2rem;
+  padding: 4rem 0.5rem 0.5rem 0.5rem;
+  box-sizing: border-box;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .scene-title {
-  font-size: 4rem;
-  margin: 0 0 1rem 0;
+  font-size: clamp(1.3rem, 4vh, 2rem);
+  margin: 0 0 clamp(0.3rem, 1.5vh, 0.8rem) 0;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #2a2a3e;
+  line-height: 1;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
 
 /* Force intro title to be white */
@@ -88,54 +103,61 @@ body {
 
 /* Dynamic color for fixed elements based on current scene */
 body[data-scene="intro"] .fixed-avatar h2,
+body[data-scene="intro"] .location-label,
 body[data-scene="intro"] .computer-indicator,
 body[data-scene="intro"] .current-computer,
 body[data-scene="intro"] .current-phone,
-body[data-scene="intro"] .computer-name,
-body[data-scene="intro"] .phone-name,
-body[data-scene="intro"] .location-label,
+body[data-scene="intro"] .current-llm,
+body[data-scene="intro"] .personal-status-indicator,
+body[data-scene="intro"] .status-text,
 body[data-scene="amherst"] .fixed-avatar h2,
+body[data-scene="amherst"] .location-label,
 body[data-scene="amherst"] .computer-indicator,
 body[data-scene="amherst"] .current-computer,
 body[data-scene="amherst"] .current-phone,
-body[data-scene="amherst"] .computer-name,
-body[data-scene="amherst"] .phone-name,
-body[data-scene="amherst"] .location-label,
+body[data-scene="amherst"] .current-llm,
+body[data-scene="amherst"] .personal-status-indicator,
+body[data-scene="amherst"] .status-text,
 body[data-scene="chicago"] .fixed-avatar h2,
+body[data-scene="chicago"] .location-label,
 body[data-scene="chicago"] .computer-indicator,
 body[data-scene="chicago"] .current-computer,
 body[data-scene="chicago"] .current-phone,
-body[data-scene="chicago"] .computer-name,
-body[data-scene="chicago"] .phone-name,
-body[data-scene="chicago"] .location-label,
+body[data-scene="chicago"] .current-llm,
+body[data-scene="chicago"] .personal-status-indicator,
+body[data-scene="chicago"] .status-text,
 body[data-scene="silicon-valley"] .fixed-avatar h2,
+body[data-scene="silicon-valley"] .location-label,
 body[data-scene="silicon-valley"] .computer-indicator,
 body[data-scene="silicon-valley"] .current-computer,
 body[data-scene="silicon-valley"] .current-phone,
-body[data-scene="silicon-valley"] .computer-name,
-body[data-scene="silicon-valley"] .phone-name,
-body[data-scene="silicon-valley"] .location-label,
+body[data-scene="silicon-valley"] .current-llm,
+body[data-scene="silicon-valley"] .personal-status-indicator,
+body[data-scene="silicon-valley"] .status-text,
 body[data-scene="amazon-key"] .fixed-avatar h2,
+body[data-scene="amazon-key"] .location-label,
 body[data-scene="amazon-key"] .computer-indicator,
 body[data-scene="amazon-key"] .current-computer,
 body[data-scene="amazon-key"] .current-phone,
-body[data-scene="amazon-key"] .computer-name,
-body[data-scene="amazon-key"] .phone-name,
-body[data-scene="amazon-key"] .location-label,
+body[data-scene="amazon-key"] .current-llm,
+body[data-scene="amazon-key"] .personal-status-indicator,
+body[data-scene="amazon-key"] .status-text,
 body[data-scene="intercom-plus"] .fixed-avatar h2,
+body[data-scene="intercom-plus"] .location-label,
 body[data-scene="intercom-plus"] .computer-indicator,
 body[data-scene="intercom-plus"] .current-computer,
 body[data-scene="intercom-plus"] .current-phone,
-body[data-scene="intercom-plus"] .computer-name,
-body[data-scene="intercom-plus"] .phone-name,
-body[data-scene="intercom-plus"] .location-label,
+body[data-scene="intercom-plus"] .current-llm,
+body[data-scene="intercom-plus"] .personal-status-indicator,
+body[data-scene="intercom-plus"] .status-text,
 body[data-scene="future"] .fixed-avatar h2,
+body[data-scene="future"] .location-label,
 body[data-scene="future"] .computer-indicator,
 body[data-scene="future"] .current-computer,
 body[data-scene="future"] .current-phone,
-body[data-scene="future"] .computer-name,
-body[data-scene="future"] .phone-name,
-body[data-scene="future"] .location-label {
+body[data-scene="future"] .current-llm,
+body[data-scene="future"] .personal-status-indicator,
+body[data-scene="future"] .status-text {
   color: white !important;
 }
 
@@ -156,7 +178,77 @@ body[data-scene="future"] .location-label {
 
 /* Scene content */
 .scene-content {
-  margin-top: 2rem;
+  margin-top: clamp(1rem, 3vh, 2rem);
+  max-width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  transform-origin: center top;
+  padding-top: 1rem;
+}
+
+/* Ensure content never overflows viewport */
+@media (max-aspect-ratio: 16/9) {
+  .scene-wrapper {
+    justify-content: flex-start;
+  }
+  
+  body[data-scene=\"silicon-valley\"] .scene-wrapper,
+  body[data-scene=\"amazon-key\"] .scene-wrapper,
+  body[data-scene=\"future\"] .scene-wrapper {
+    font-size: 90%;
+  }
+}
+
+/* Very small viewports - aggressive scaling */
+@media (max-height: 550px) {
+  .scene {
+    padding: 40px min(180px, 15vw);
+  }
+  
+  .scene-title {
+    font-size: clamp(1.2rem, 4vh, 1.8rem);
+    margin-bottom: 0.2rem;
+  }
+  
+  .scene-content {
+    --viewport-scale: calc(100vh / 1100px);
+  }
+}
+
+/* Reusable three-card centered layout */
+.three-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* Dynamic content scaling to prevent cutoff */
+@supports (height: 100vh) {
+  .scene-content {
+    --viewport-scale: min(1, calc(100vh / 800px));
+    transform: scale(var(--viewport-scale));
+  }
+  
+  /* Extra scaling for content-heavy slides */
+  body[data-scene=\"silicon-valley\"] .scene-content,
+  body[data-scene=\"amazon-key\"] .scene-content,
+  body[data-scene=\"future\"] .scene-content {
+    --viewport-scale: min(0.8, calc(100vh / 1000px));
+    transform: scale(var(--viewport-scale));
+  }
+}
+
+.three-card-grid > * {
+  flex: 0 1 280px;
+  min-width: 200px;
+  max-width: 300px;
 }
 
 .narrative {
@@ -254,9 +346,7 @@ body[data-scene="future"] .location-label {
 
 /* Activities grid */
 .activities-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  /* Using three-card-grid class for centering */
   margin-top: 2rem;
 }
 
@@ -267,6 +357,9 @@ body[data-scene="future"] .location-label {
   text-align: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
+  flex: 0 1 220px;
+  min-width: 200px;
+  max-width: 280px;
 }
 
 .activity-card:hover {
@@ -359,12 +452,12 @@ body[data-scene="future"] .location-label {
 /* Fixed Computer Timeline */
 .fixed-computer-timeline {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  top: 80px;
+  left: 30px;
   z-index: 1000;
-  filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
   min-width: 180px;
-  text-align: center;
+  text-align: left;
   animation: fadeIn 0.5s ease;
 }
 
@@ -485,19 +578,74 @@ body[data-scene="future"] .location-label {
 .current-computer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
   color: #2a2a3e;
+  flex-wrap: wrap;
+  text-align: left;
+  line-height: 1.2;
 }
 
 .computer-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .current-phone {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: #2a2a3e;
+}
+
+.phone-icon {
+  font-size: 1rem;
+}
+
+.current-llm {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #2a2a3e;
+}
+
+.llm-icon {
+  font-size: 1rem;
+}
+
+.computer-name {
+  font-size: 0.7rem;
+  display: inline;
+}
+
+.phone-name,
+.llm-name {
+  font-size: 0.7rem;
+}
+
+/* Fixed Personal Status */
+.fixed-personal-status {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.personal-status-indicator {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -507,12 +655,11 @@ body[data-scene="future"] .location-label {
   color: #2a2a3e;
 }
 
-.phone-icon {
+.status-icon {
   font-size: 1.2rem;
 }
 
-.computer-name,
-.phone-name {
+.status-text {
   font-size: 0.85rem;
 }
 
@@ -590,7 +737,7 @@ body[data-scene="future"] .location-label {
 @media (max-width: 768px) {
   /* Main scene content */
   .scene-wrapper {
-    padding: 1rem;
+    padding: 3rem 1rem 1rem 1rem;
     width: 95%;
   }
   
@@ -628,6 +775,7 @@ body[data-scene="future"] .location-label {
   
   .activity-card {
     padding: 0.8rem;
+    height: auto !important;
   }
   
   .activity-card .icon {
@@ -686,12 +834,13 @@ body[data-scene="future"] .location-label {
     top: 45px;
   }
   
-  /* Fixed computer timeline */
+  /* Fixed computer timeline - align with map */
   .fixed-computer-timeline {
-    bottom: 10px;
-    right: 5px;
-    padding: 0.5rem;
-    min-width: 120px;
+    top: 10px;
+    left: 10px;
+    padding: 0.3rem;
+    min-width: 110px;
+    font-size: 0.75rem;
   }
   
   .current-year {
@@ -699,20 +848,42 @@ body[data-scene="future"] .location-label {
   }
   
   .current-computer,
-  .current-phone {
+  .current-phone,
+  .current-llm {
     font-size: 0.7rem;
     gap: 0.3rem;
     margin-bottom: 0.2rem;
   }
   
   .computer-icon,
-  .phone-icon {
+  .phone-icon,
+  .llm-icon {
     font-size: 0.8rem;
   }
   
   .computer-name,
-  .phone-name {
+  .phone-name,
+  .llm-name {
     font-size: 0.65rem;
+  }
+  
+  /* Fixed personal status */
+  .fixed-personal-status {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .personal-status-indicator {
+    font-size: 0.8rem;
+    gap: 0.3rem;
+  }
+  
+  .status-icon {
+    font-size: 1rem;
+  }
+  
+  .status-text {
+    font-size: 0.75rem;
   }
   
   /* Scene progress */
@@ -798,9 +969,7 @@ body[data-scene="future"] .location-label {
 }
 
 .college-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  /* Using three-card-grid class for centering */
   margin-top: 2rem;
 }
 
@@ -917,17 +1086,21 @@ body[data-scene="future"] .location-label {
 }
 
 .mobile-showcase {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
 }
 
 .phone-container {
-  width: 140px;
-  height: 280px;
+  width: 100px;
+  height: 200px;
   background: #333;
-  border-radius: 25px;
-  padding: 8px;
-  margin: 0 auto 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 5px;
+  margin: 0 auto 0.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .phone-screen {
@@ -977,9 +1150,9 @@ body[data-scene="future"] .location-label {
 .banks-grid-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin: 2rem auto;
-  height: 300px;
+  max-width: 500px;
+  margin: 1rem auto;
+  height: 200px;
   overflow: hidden;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.3);
@@ -1015,14 +1188,14 @@ body[data-scene="future"] .location-label {
   transform: translate(-50%, -50%);
   text-align: center;
   background: rgba(0, 0, 0, 0.8);
-  padding: 2rem 3rem;
-  border-radius: 15px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   backdrop-filter: blur(10px);
 }
 
 .banks-overlay h3 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: white;
   font-weight: 700;
 }
@@ -1053,12 +1226,12 @@ body[data-scene="future"] .location-label {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .package, .destination {
-  font-size: 4rem;
+  font-size: 2.5rem;
 }
 
 .flow-line {
@@ -1152,6 +1325,7 @@ body[data-scene="future"] .location-label {
   gap: 2rem;
   align-items: center;
   width: 100%;
+  padding: 0 0 2rem 0;
 }
 
 .delivery-section {
@@ -1169,9 +1343,10 @@ body[data-scene="future"] .location-label {
 .products-and-tech {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .products-section {
@@ -1195,12 +1370,14 @@ body[data-scene="future"] .location-label {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin: 0 auto;
+  padding: 0 0 2rem 0;
+  max-width: 100%;
 }
 
 .tech-stack-grid.compact .tech-item {
   background: rgba(255, 255, 255, 0.9);
-  padding: 1rem;
-  border-radius: 12px;
+  padding: 0.8rem;
+  border-radius: 10px;
 }
 
 .tech-stack-grid.compact .tech-item h4 {
@@ -1317,10 +1494,9 @@ body[data-scene="future"] .location-label {
 }
 
 .future-elements {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+  /* Using three-card-grid class for centering */
+  margin-bottom: 2rem;
+  width: 100%;
 }
 
 .future-item {
@@ -1404,10 +1580,74 @@ body[data-scene="future"] .location-label {
   }
 }
 
+/* Tablet-specific styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Scene padding adjustments for tablet */
+  .scene {
+    padding: 70px 100px;
+  }
+  
+  .scene-wrapper {
+    max-height: calc(100vh - 140px);
+  }
+  
+  .scene-title {
+    font-size: 2.2rem;
+  }
+  
+  /* Scale down content for tablet */
+  .scene-content {
+    transform: scale(0.9);
+    transform-origin: center top;
+  }
+  /* Future section - center cards when they wrap */
+  .future-elements {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .future-item {
+    flex: 0 1 calc(50% - 0.75rem);
+    min-width: 280px;
+    max-width: 350px;
+  }
+}
+
 /* Responsive additions */
 @media (max-width: 768px) {
-  /* College and study cards */
-  .college-grid,
+  /* Scene padding adjustments for mobile */
+  .scene {
+    padding: 60px 10px 80px 10px;
+  }
+  
+  .scene-wrapper {
+    max-height: calc(100vh - 140px);
+    padding: 2.5rem 0.5rem 0.5rem 0.5rem;
+  }
+  
+  /* Scale down content for mobile */
+  .scene-content {
+    transform: scale(0.8);
+    transform-origin: center top;
+  }
+  /* Three card grids on mobile */
+  .three-card-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+  
+  .three-card-grid > * {
+    flex: none;
+    min-width: unset;
+    max-width: 100%;
+    width: 100%;
+    height: auto !important;
+    min-height: unset !important;
+  }
+  
   .client-logos {
     grid-template-columns: 1fr;
     gap: 0.8rem;
@@ -1415,6 +1655,7 @@ body[data-scene="future"] .location-label {
   
   .study-card {
     padding: 1rem;
+    height: auto !important;
   }
   
   .study-card .icon {
@@ -1473,23 +1714,24 @@ body[data-scene="future"] .location-label {
   
   /* Mobile banking section */
   .phone-container {
-    width: 120px;
-    height: 240px;
-    padding: 6px;
-    margin: 0 auto 1rem;
+    width: 60px;
+    height: 120px;
+    padding: 3px;
+    margin: 0 auto 0.5rem;
   }
   
   .phone-screen {
-    border-radius: 15px;
+    border-radius: 10px;
+    padding: 0.5rem;
   }
   
   .app-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
   }
   
   .app-type {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
   
   .tech-stack {
@@ -1669,6 +1911,7 @@ body[data-scene="future"] .location-label {
   
   .future-item {
     padding: 1.2rem;
+    height: auto !important;
   }
   
   .future-icon {
