@@ -61,7 +61,7 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%)',
-      personalStatus: 'Son',
+      personalStatus: 'Kid',
       location: 'new-york'
     },
     {
@@ -87,7 +87,7 @@ function App() {
       ),
       background: 'linear-gradient(135deg, #e8f5e8 0%, #d5f0d5 100%)',
       computer: 'Apple IIgs → Macintosh LC III → Gateway 2000',
-      personalStatus: 'Son',
+      personalStatus: 'Kid',
       location: 'berkeley'
     },
     {
@@ -117,7 +117,6 @@ function App() {
       background: 'linear-gradient(135deg, #3a3a5a 0%, #4a3a5a 100%)',
       computer: 'Toshiba Laptop',
       phone: 'Nokia 6230',
-      personalStatus: 'Son',
       location: 'amherst'
     },
     {
@@ -155,7 +154,6 @@ function App() {
       background: 'linear-gradient(135deg, #2a3a4e 0%, #3a4a5e 100%)',
       computer: 'Linux Workstations',
       phone: 'BlackBerry',
-      personalStatus: 'Son, Dating',
       location: 'chicago'
     },
     {
@@ -193,7 +191,7 @@ function App() {
       background: 'linear-gradient(135deg, #2a4a4a 0%, #3a5a5a 100%)',
       computer: 'MacBook Pro 15"',
       phone: 'iPhone 4 → iPhone 4S',
-      personalStatus: 'Husband, Son',
+      personalStatus: 'Partner',
       location: 'sf-peninsula'
     },
     {
@@ -241,7 +239,7 @@ function App() {
       computer: 'MacBook Pro 14" (M1 → M2 → M4 Max)',
       phone: 'iPhone X → 16 Pro Max',
       llm: 'Anthropic Claude 4',
-      personalStatus: 'Father, Husband, Son',
+      personalStatus: 'Parent',
       location: 'sf-peninsula'
     },
     {
