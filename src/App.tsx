@@ -210,7 +210,7 @@ function App() {
       background: 'linear-gradient(135deg, #2a4a4a 0%, #3a5a5a 100%)',
       computer: 'MacBook Pro 15"',
       phone: 'iPhone 4 → iPhone 4S',
-      personalStatus: 'Partner, Kid',
+      personalStatus: 'Partner',
       location: 'sf-peninsula'
     },
     {
@@ -258,7 +258,7 @@ function App() {
       computer: 'MacBook Pro 14" (M1 → M2 → M4 Max)',
       phone: 'iPhone X → 16 Pro Max',
       llm: 'Anthropic Claude 4',
-      personalStatus: 'Parent, Partner, Kid',
+      personalStatus: 'Parent, Partner',
       location: 'sf-peninsula'
     },
     {
@@ -288,6 +288,7 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #1f1f2e 0%, #2a2a3e 100%)',
+      personalStatus: 'Parent, Partner',
       location: 'sf-peninsula'
     },
     {
@@ -661,8 +662,8 @@ function App() {
 
   return (
     <div ref={containerRef} className="app-container">
-      {/* Fixed Tom Avatar - hide on intro */}
-      {currentScene > 0 && (
+      {/* Fixed Tom Avatar - hide on intro and credits */}
+      {currentScene > 0 && scenes[currentScene].id !== 'credits' && (
         <div className="fixed-avatar">
           <TomAvatar currentScene={currentScene} />
         </div>
@@ -694,8 +695,10 @@ function App() {
         </div>
       )}
 
-      {/* Fixed US Map Indicator */}
-      <USMapIndicator currentLocation={currentLocation} />
+      {/* Fixed US Map Indicator - hide on credits */}
+      {scenes[currentScene].id !== 'credits' && (
+        <USMapIndicator currentLocation={currentLocation} />
+      )}
 
       {/* Fixed Personal Status */}
       {currentPersonalStatus && (
