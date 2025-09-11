@@ -685,7 +685,7 @@ body[data-scene="credits"] .status-text {
   text-align: center;
   font-size: 0.7rem;
   font-weight: 700;
-  color: #2a2a3e;
+  color: #666;
   letter-spacing: 0.02em;
   line-height: 1.2;
   word-wrap: break-word;
@@ -704,7 +704,7 @@ body[data-scene="credits"] .status-text {
 }
 
 .computer-indicator {
-  color: #2a2a3e;
+  color: #666;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -721,7 +721,7 @@ body[data-scene="credits"] .status-text {
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 0.35rem;
-  color: #2a2a3e;
+  color: #666;
   flex-wrap: wrap;
   text-align: left;
   line-height: 1.2;
@@ -740,7 +740,7 @@ body[data-scene="credits"] .status-text {
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 0.35rem;
-  color: #2a2a3e;
+  color: #666;
 }
 
 .phone-icon {
@@ -755,7 +755,7 @@ body[data-scene="credits"] .status-text {
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 0;
-  color: #2a2a3e;
+  color: #666;
 }
 
 .llm-icon {
@@ -787,19 +787,19 @@ body[data-scene="credits"] .status-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #2a2a3e;
-  min-height: 60px;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #666;
+  min-height: 40px;
 }
 
 .status-icon {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
 .status-text {
-  font-size: 0.85rem;
+  font-size: 0.7rem;
 }
 
 /* Scene Progress Indicator */
@@ -1065,8 +1065,8 @@ body[data-scene="credits"] .status-text {
   }
   
   .personal-status-indicator {
-    font-size: 0.8rem;
-    gap: 0.3rem;
+    font-size: 0.6rem;
+    gap: 0.25rem;
   }
   
   .status-icon {
@@ -1074,7 +1074,7 @@ body[data-scene="credits"] .status-text {
   }
   
   .status-text {
-    font-size: 0.75rem;
+    font-size: 0.55rem;
   }
   
   /* Scene progress */

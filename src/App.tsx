@@ -136,6 +136,7 @@ function App() {
       background: 'linear-gradient(135deg, #3a3a5a 0%, #4a3a5a 100%)',
       computer: 'Toshiba Laptop',
       phone: 'Nokia 6230',
+      personalStatus: 'Student',
       location: 'amherst'
     },
     {
@@ -173,6 +174,7 @@ function App() {
       background: 'linear-gradient(135deg, #2a3a4e 0%, #3a4a5e 100%)',
       computer: 'Linux Workstations',
       phone: 'BlackBerry',
+      personalStatus: 'Programmer',
       location: 'chicago'
     },
     {
@@ -210,7 +212,7 @@ function App() {
       background: 'linear-gradient(135deg, #2a4a4a 0%, #3a5a5a 100%)',
       computer: 'MacBook Pro 15"',
       phone: 'iPhone 4 → iPhone 4S',
-      personalStatus: 'Partner',
+      personalStatus: 'Husband',
       location: 'sf-peninsula'
     },
     {
@@ -258,7 +260,7 @@ function App() {
       computer: 'MacBook Pro 14" (M1 → M2 → M4 Max)',
       phone: 'iPhone X → 16 Pro Max',
       llm: 'Anthropic Claude 4',
-      personalStatus: 'Parent, Partner',
+      personalStatus: 'Parent',
       location: 'sf-peninsula'
     },
     {
@@ -288,7 +290,7 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #1f1f2e 0%, #2a2a3e 100%)',
-      personalStatus: 'Parent, Partner',
+      personalStatus: '',
       location: 'sf-peninsula'
     },
     {
@@ -662,8 +664,8 @@ function App() {
 
   return (
     <div ref={containerRef} className="app-container">
-      {/* Fixed Tom Avatar - hide on intro and credits */}
-      {currentScene > 0 && scenes[currentScene].id !== 'credits' && (
+      {/* Fixed Tom Avatar - hide on intro */}
+      {currentScene > 0 && (
         <div className="fixed-avatar">
           <TomAvatar currentScene={currentScene} />
         </div>
