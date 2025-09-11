@@ -604,7 +604,7 @@ function App() {
           const maxScroll = scrollHeight - clientHeight
           
           if (maxScroll > 0) {
-            const duration = 6000 // 6 seconds
+            const duration = 10000 // 10 seconds
             const startTime = Date.now()
             
             const animateScroll = () => {

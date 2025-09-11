@@ -1982,7 +1982,7 @@ body[data-scene="credits"] .status-text {
 @media (max-width: 768px) {
   /* Scene padding adjustments for mobile */
   .scene {
-    padding: 70px 20px 70px 20px;
+    padding: 70px 20px 0 20px;
   }
   
   .scene-wrapper {
