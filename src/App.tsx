@@ -55,8 +55,19 @@ function App() {
       title: 'Born in New York',
       content: (
         <div className="scene-content new-york">
-          <div className="pizza-love">
-            <span className="emoji pizza">🍕</span>
+          <div className="ny-experience">
+            <div className="pizza-rain-container">
+              {[...Array(50)].map((_, i) => (
+                <span key={i} className="diagonal-pizza" style={{ 
+                  left: `${-10 + Math.random() * 120}%`,
+                  top: `${-20 + Math.random() * 40}%`,
+                  animationDelay: `${Math.random() * 0.5}s`
+                }}>🍕</span>
+              ))}
+            </div>
+            <div className="ny-childhood">
+              <span className="main-icon">🛝</span>
+            </div>
           </div>
         </div>
       ),
@@ -74,9 +85,12 @@ function App() {
               <span className="icon">🚴</span>
               <h3>Biking</h3>
             </div>
-            <div className="activity-card" data-activity="tennis">
-              <span className="icon">🎾</span>
+            <div className="activity-card activity-card-tennis" data-activity="tennis">
+              <span className="icon tennis-ball">🎾</span>
               <h3>Tennis</h3>
+              <div className="skateboard-animation">
+                <span className="skateboard">🛹</span>
+              </div>
             </div>
             <div className="activity-card" data-activity="bmug">
               <span className="icon">💻</span>
@@ -111,6 +125,11 @@ function App() {
               <h3>Mathematics</h3>
               <p>Exploring abstract concepts</p>
             </div>
+          </div>
+          <div className="amherst-animation-container">
+            <span className="animated-text essay-text">Frost wrote: "No tears in the writer, no tears in the reader..."</span>
+            <span className="animated-text greek-text">γνῶθι σεαυτόν — "know thyself"</span>
+            <span className="animated-text math-text">ζ(s) = Σ<sub>n=1</sub><sup>∞</sup> n<sup>-s</sup></span>
           </div>
         </div>
       ),
@@ -210,23 +229,23 @@ function App() {
             </div>
             <div className="products-section">
               <div className="apps-grid-square">
-                <div className="app-card">
-                  <span className="app-icon">🔑</span>
+                <div className="app-card key-card">
+                  <span className="app-icon rotating-key">🔑</span>
                   <h3>Amazon Key</h3>
                   <p>Indoor delivery access</p>
                 </div>
-                <div className="app-card">
-                  <span className="app-icon">🚚</span>
+                <div className="app-card flex-card">
+                  <span className="app-icon driving-truck">🚚</span>
                   <h3>Amazon Flex</h3>
                   <p>Driver delivery app</p>
                 </div>
-                <div className="app-card">
-                  <span className="app-icon">🔔</span>
+                <div className="app-card ring-card">
+                  <span className="app-icon ringing-bell">🔔</span>
                   <h3>Ring</h3>
                   <p>Home security integration</p>
                 </div>
-                <div className="app-card">
-                  <span className="app-icon">🛒</span>
+                <div className="app-card shopping-card">
+                  <span className="app-icon sliding-cart">🛒</span>
                   <h3>Amazon Shopping</h3>
                   <p>Core shopping experience</p>
                 </div>
@@ -250,17 +269,17 @@ function App() {
           <div className="future-vision">
             <div className="future-elements three-card-grid">
               <div className="future-item">
-                <span className="future-icon">🌟</span>
+                <span className="future-icon future-icon-1">🌟</span>
                 <h3>Build Products</h3>
                 <p>Create tools that matter</p>
               </div>
               <div className="future-item">
-                <span className="future-icon">🤝</span>
+                <span className="future-icon future-icon-2">🤝</span>
                 <h3>Mentor</h3>
                 <p>Help others grow</p>
               </div>
               <div className="future-item">
-                <span className="future-icon">🌍</span>
+                <span className="future-icon future-icon-3">🌍</span>
                 <h3>Make Global Impact</h3>
                 <p>Use technology for good</p>
               </div>
@@ -277,6 +296,7 @@ function App() {
       content: (
         <div className="scene-content credits">
           <div className="credits-grid">
+            <div className="credits-scroll-wrapper">
             <div className="credits-section">
               <h3>💻 Hardware</h3>
               <div className="credits-items">
@@ -342,6 +362,13 @@ function App() {
                     <p>Animation library</p>
                   </div>
                 </div>
+                <div className="credit-item">
+                  <span className="credit-icon">⚡</span>
+                  <div>
+                    <strong>Anthropic Claude</strong>
+                    <p>AI development partner</p>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -376,6 +403,13 @@ function App() {
                     <p>3D modeling & animation</p>
                   </div>
                 </div>
+                <div className="credit-item">
+                  <span className="credit-icon">📓</span>
+                  <div>
+                    <strong>Paper & Pencil</strong>
+                    <p>Sketching & ideation</p>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -404,13 +438,6 @@ function App() {
                   </div>
                 </div>
                 <div className="credit-item">
-                  <span className="credit-icon">🏃</span>
-                  <div>
-                    <strong>Polygon Runway</strong>
-                    <p>3D & motion graphics</p>
-                  </div>
-                </div>
-                <div className="credit-item">
                   <span className="credit-icon">🍪</span>
                   <div>
                     <strong>CG Cookie</strong>
@@ -425,6 +452,7 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
@@ -536,6 +564,70 @@ function App() {
     
     // Set body data attribute for CSS styling
     document.body.setAttribute('data-scene', scene.id)
+    
+    // Tennis ball animation for Berkeley scene
+    if (scene.id === 'berkeley-life') {
+      // Reset animation by removing and re-adding elements
+      const tennisBall = document.querySelector('.tennis-ball')
+      const skateboard = document.querySelector('.skateboard-animation')
+      
+      if (tennisBall) {
+        tennisBall.classList.remove('hit')
+      }
+      
+      if (skateboard) {
+        const parent = skateboard.parentNode
+        const newSkateboard = skateboard.cloneNode(true)
+        parent?.replaceChild(newSkateboard, skateboard)
+      }
+      
+      setTimeout(() => {
+        const tennisBall = document.querySelector('.tennis-ball')
+        if (tennisBall) {
+          tennisBall.classList.add('hit')
+        }
+      }, 2565) // Trigger when skateboard tilts (1.5s delay + 1.065s for 71% of 1.5s)
+    }
+    
+    // Reset credits animation when entering credits scene
+    if (scene.id === 'credits') {
+      setTimeout(() => {
+        const creditsGrid = document.querySelector('.credits-grid') as HTMLElement
+        
+        if (creditsGrid && window.innerWidth <= 768) {
+          // Reset scroll position
+          creditsGrid.scrollTop = 0
+          
+          // Calculate scroll distance
+          const scrollHeight = creditsGrid.scrollHeight
+          const clientHeight = creditsGrid.clientHeight
+          const maxScroll = scrollHeight - clientHeight
+          
+          if (maxScroll > 0) {
+            const duration = 6000 // 6 seconds
+            const startTime = Date.now()
+            
+            const animateScroll = () => {
+              const elapsed = Date.now() - startTime
+              const progress = Math.min(elapsed / duration, 1)
+              
+              // Ease-in-out animation (slow start, fast middle, slow end)
+              const easeInOutProgress = progress < 0.5
+                ? 2 * progress * progress
+                : 1 - Math.pow(-2 * progress + 2, 2) / 2
+              
+              creditsGrid.scrollTop = maxScroll * easeInOutProgress
+              
+              if (progress < 1) {
+                requestAnimationFrame(animateScroll)
+              }
+            }
+            
+            requestAnimationFrame(animateScroll)
+          }
+        }
+      }, 100) // Small delay to ensure DOM is ready
+    }
   }, [currentScene])
 
   // Initialize scene positions

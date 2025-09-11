@@ -311,19 +311,64 @@ body[data-scene="credits"] .status-text {
   }
 }
 
-/* Pizza animation */
-.pizza-love {
+/* New York scene */
+.ny-experience {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 3rem;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.emoji.pizza {
-  font-size: 5rem;
-  cursor: pointer;
-  display: inline-block;
+.pizza-rain-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.diagonal-pizza {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: diagonalRain 2s ease-out forwards;
+}
+
+@keyframes diagonalRain {
+  0% {
+    opacity: 0.8;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(300px, 300px) rotate(180deg);
+  }
+}
+
+.ny-childhood {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.main-icon {
+  font-size: 6rem;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: centerSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+}
+
+@keyframes centerSlideIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 
@@ -349,6 +394,7 @@ body[data-scene="credits"] .status-text {
 .activities-grid {
   /* Using three-card-grid class for centering */
   margin-top: 2rem;
+  position: relative;
 }
 
 .activity-card {
@@ -405,6 +451,67 @@ body[data-scene="credits"] .status-text {
 .activity-card p {
   color: #666;
   font-size: 0.9rem;
+}
+
+/* Tennis ball and skateboard animation */
+.tennis-ball {
+  position: relative;
+  display: inline-block;
+  animation: tennisBallRise 0.5s ease-out 1s forwards;
+}
+
+@keyframes tennisBallRise {
+  to {
+    transform: translateY(-30px);
+  }
+}
+
+.tennis-ball.hit {
+  animation: tennisBallFly 1s cubic-bezier(0.5, 0, 0.8, 0.4) forwards;
+}
+
+@keyframes tennisBallFly {
+  0% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateX(400px) translateY(-150px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.skateboard-animation {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  animation: skateboardSlide 1.5s cubic-bezier(0.3, 0.8, 0.2, 1) 1.5s forwards;
+}
+
+.skateboard {
+  position: relative;
+  font-size: 6rem;
+}
+
+@keyframes skateboardSlide {
+  0% {
+    opacity: 1;
+    transform: translateX(-1000px) rotate(-10deg) translateY(40px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(50px) rotate(0deg) translateY(40px);
+  }
+  71% {
+    opacity: 1;
+    transform: translateX(50px) rotate(25deg) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(50px) rotate(25deg) translateY(-20px);
+  }
 }
 
 /* Computer highlight */
@@ -804,7 +911,7 @@ body[data-scene="credits"] .status-text {
     gap: 0.8rem;
     margin-top: 1rem;
   }
-  
+ 
   .activity-card {
     padding: 0.8rem;
     height: auto !important;
@@ -821,6 +928,55 @@ body[data-scene="credits"] .status-text {
   
   .activity-card p {
     font-size: 0.75rem;
+  }
+  
+  .activity-card-tennis {
+    position: relative;
+  }
+  
+  /* Mobile tennis/skateboard animation */
+  .skateboard {
+    font-size: 4rem;
+  }
+  
+  .skateboard-animation {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+    animation: skateboardSlideMobile 1.5s cubic-bezier(0.3, 0.8, 0.2, 1) 1.5s forwards;
+  }
+  
+  @keyframes skateboardSlideMobile {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateX(-300px) translateY(10px) rotate(-10deg);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateX(0) translateY(10px) rotate(0deg);
+    }
+    71% {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateX(0) rotate(25deg) translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateX(0) rotate(25deg) translateY(-20px);
+    }
+  }
+  
+  @keyframes tennisBallFly {
+    0% {
+      transform: translateY(-30px);
+    }
+    100% {
+      transform: translateX(300px) translateY(-80px) rotate(720deg);
+      opacity: 0;
+    }
   }
   
   /* Mobile fixed elements */
@@ -973,13 +1129,34 @@ body[data-scene="credits"] .status-text {
     font-size: 0.85rem;
   }
   
-  .pizza-love {
-    margin-top: 1.5rem;
-    gap: 0.5rem;
+  /* New York scene mobile */
+  .diagonal-pizza {
+    font-size: 1.2rem;
   }
   
-  .emoji.pizza {
-    font-size: 3rem;
+  .pizza-rain-container {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  
+  @keyframes diagonalRain {
+    0% {
+      opacity: 0.8;
+      transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(150px, 150px) rotate(180deg);
+    }
+  }
+  
+  .main-icon {
+    font-size: 4rem;
   }
   
   .school-memories {
@@ -2187,6 +2364,11 @@ body[data-scene="credits"] .status-text {
   overflow-y: auto;
 }
 
+/* Desktop wrapper - no animation */
+.credits-scroll-wrapper {
+  display: contents; /* This makes the wrapper invisible on desktop */
+}
+
 .credits-section {
   background: rgba(255, 255, 255, 0.1);
   padding: 0.8rem;
@@ -2214,6 +2396,10 @@ body[data-scene="credits"] .status-text {
 
 .credits-section:nth-child(4) {
   animation-delay: 0.04s;
+}
+
+.credits-section:nth-child(5) {
+  animation-delay: 0.05s;
 }
 
 .credits-section:hover {
@@ -2344,41 +2530,324 @@ body[data-scene="credits"] .status-text {
 
 /* Mobile credits layout */
 @media (max-width: 768px) {
-  .credits-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    max-height: 60vh;
-    overflow-y: auto;
+  .scene-content.credits {
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 0;
   }
   
+  .credits-grid {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 80px); /* Account for title only */
+    margin-top: 60px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    padding: 0 1rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .credits-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+  
+  
   .credits-section {
-    padding: 0.8rem;
-    min-height: 150px;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    min-height: auto;
+    position: relative;
+  }
+  
+  /* Create a wrapper for the scrolling animation */
+  .credits-scroll-wrapper {
+    display: block;
+    width: 100%;
+    padding-bottom: 2rem;
   }
   
   .credits-section h3 {
-    font-size: 0.85rem;
-    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
   }
   
   .credits-items {
-    gap: 0.4rem;
+    gap: 0.6rem;
   }
   
   .credit-item {
-    padding: 0.4rem;
-    gap: 0.4rem;
+    padding: 0.6rem;
+    gap: 0.5rem;
   }
   
   .credit-icon {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   
   .credit-item strong {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
   
   .credit-item p {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Amherst Animation Container */
+.amherst-animation-container {
+  position: relative;
+  margin-top: 2rem;
+  height: 40px;
+  text-align: center;
+  overflow: visible;
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.animated-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  top: 0;
+  max-width: calc(100vw - 1rem);
+}
+
+@media (max-width: 768px) {
+  .animated-text {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  .amherst-animation-container {
+    height: 60px;
+  }
+}
+
+.essay-text {
+  color: white;
+  animation: fadeInOut 9s ease-out forwards;
+  animation-delay: 0s;
+  font-style: italic;
+}
+
+.greek-text {
+  color: white;
+  font-family: 'Times New Roman', serif;
+  animation: fadeInOut 9s ease-out forwards;
+  animation-delay: 3s;
+}
+
+.math-text {
+  color: white;
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  animation: fadeInOut 9s ease-out forwards;
+  animation-delay: 6s;
+}
+
+@keyframes fadeInOut {
+  0%, 33.33%, 100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  5%, 28% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Amazon Key Animations */
+.rotating-key {
+  display: inline-block;
+  animation: keyRotate 3s ease-in-out forwards;
+  transform-origin: 75% 25%;
+  animation-delay: 0s;
+}
+
+@keyframes keyRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+
+.driving-truck {
+  display: inline-block;
+  opacity: 0;
+  animation: truckDrive 1.5s ease-out forwards;
+  animation-delay: 0.75s;
+}
+
+@keyframes truckDrive {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.ringing-bell {
+  display: inline-block;
+  animation: bellRing 3s ease-out forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes bellRing {
+  0%, 60% {
+    transform: rotate(0deg);
+  }
+  65% {
+    transform: rotate(-15deg);
+  }
+  70% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(10deg);
+  }
+  85% {
+    transform: rotate(-5deg);
+  }
+  90% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.sliding-cart {
+  display: inline-block;
+  animation: cartSlide 1.5s ease-out forwards;
+  animation-delay: 2.25s;
+  opacity: 0;
+}
+
+@keyframes cartSlide {
+  0% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Ensure cards have position relative for absolute positioned animations */
+.study-card {
+  position: relative;
+}
+
+/* Future section emoji animations */
+.future-icon-1 {
+  opacity: 0;
+  transform: translateY(0) scale(0);
+  animation: starRise 3s ease-out forwards;
+}
+
+.future-icon-2 {
+  opacity: 0;
+  transform: scale(0);
+  animation: handShake 3s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.future-icon-3 {
+  opacity: 0;
+  transform: scale(0) rotateY(0deg);
+  animation: globeSpin 3s ease-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes starRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
+  }
+}
+
+@keyframes handShake {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(1) rotate(-20deg);
+  }
+  40% {
+    transform: scale(1) rotate(20deg);
+  }
+  50% {
+    transform: scale(1) rotate(-15deg);
+  }
+  60% {
+    transform: scale(1) rotate(15deg);
+  }
+  70% {
+    transform: scale(1) rotate(-10deg);
+  }
+  80% {
+    transform: scale(1) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes globeSpin {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
