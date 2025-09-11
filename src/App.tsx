@@ -303,28 +303,28 @@ function App() {
             <div className="credits-section">
               <h3>💻 Hardware</h3>
               <div className="credits-items">
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://apple.com', '_blank')}>
                   <span className="credit-icon">🖥️</span>
                   <div>
                     <strong>MacBook Pro M4 Max</strong>
                     <p>128GB RAM, 8TB Storage</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://amazon.com', '_blank')}>
                   <span className="credit-icon">⌨️</span>
                   <div>
                     <strong>Nulea Ergonomic + Magic Trackpad</strong>
                     <p>Numpad removed, trackpad velcro-attached</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://amazon.com', '_blank')}>
                   <span className="credit-icon">🖼️</span>
                   <div>
                     <strong>LG UltraFine Display</strong>
                     <p>External Monitor</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://amazon.com', '_blank')}>
                   <span className="credit-icon">🎧</span>
                   <div>
                     <strong>Apple Wired Headphones</strong>
@@ -337,35 +337,35 @@ function App() {
             <div className="credits-section">
               <h3>🛠️ Development</h3>
               <div className="credits-items">
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://www.vim.org', '_blank')}>
                   <span className="credit-icon">⌨️</span>
                   <div>
                     <strong>Vim + iTerm</strong>
                     <p>Code editing</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://react.dev', '_blank')}>
                   <span className="credit-icon">⚛️</span>
                   <div>
                     <strong>React + TypeScript</strong>
                     <p>Frontend framework</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://python.org', '_blank')}>
                   <span className="credit-icon">🐍</span>
                   <div>
                     <strong>Python</strong>
                     <p>Backend & scripting</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://gsap.com', '_blank')}>
                   <span className="credit-icon">🎭</span>
                   <div>
                     <strong>GSAP</strong>
                     <p>Animation library</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://anthropic.com', '_blank')}>
                   <span className="credit-icon">⚡</span>
                   <div>
                     <strong>Anthropic Claude</strong>
@@ -378,28 +378,28 @@ function App() {
             <div className="credits-section">
               <h3>🎨 Design & Media</h3>
               <div className="credits-items">
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://figma.com', '_blank')}>
                   <span className="credit-icon">🎯</span>
                   <div>
                     <strong>Figma</strong>
                     <p>UI/UX design</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://adobe.com', '_blank')}>
                   <span className="credit-icon">🎬</span>
                   <div>
                     <strong>After Effects</strong>
                     <p>Motion graphics</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://adobe.com', '_blank')}>
                   <span className="credit-icon">🖼️</span>
                   <div>
                     <strong>Photoshop + Illustrator</strong>
                     <p>Image editing & vectors</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://blender.org', '_blank')}>
                   <span className="credit-icon">🎲</span>
                   <div>
                     <strong>Blender</strong>
@@ -419,35 +419,35 @@ function App() {
             <div className="credits-section">
               <h3>📚 Learning</h3>
               <div className="credits-items">
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://schoolofmotion.com', '_blank')}>
                   <span className="credit-icon">🎬</span>
                   <div>
                     <strong>School of Motion</strong>
                     <p>Motion design courses</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://frontendmasters.com', '_blank')}>
                   <span className="credit-icon">💻</span>
                   <div>
                     <strong>Frontend Masters</strong>
                     <p>Advanced web development</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://youtube.com', '_blank')}>
                   <span className="credit-icon">📺</span>
                   <div>
                     <strong>YouTube</strong>
                     <p>Tutorials & inspiration</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://cgcookie.com', '_blank')}>
                   <span className="credit-icon">🍪</span>
                   <div>
                     <strong>CG Cookie</strong>
                     <p>Blender tutorials</p>
                   </div>
                 </div>
-                <div className="credit-item">
+                <div className="credit-item" onClick={() => window.open('https://learnui.design', '_blank')}>
                   <span className="credit-icon">🎨</span>
                   <div>
                     <strong>LearnUI Design</strong>

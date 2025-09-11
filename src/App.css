@@ -2432,6 +2432,7 @@ body[data-scene="credits"] .status-text {
   opacity: 0;
   transform: translateX(-8px);
   animation: slideInFromLeft 0.12s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  cursor: pointer;
 }
 
 .credits-section:nth-child(1) .credit-item:nth-child(1) {
