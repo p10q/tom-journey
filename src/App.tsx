@@ -31,7 +31,7 @@ function App() {
   const scenesRef = useRef<HTMLDivElement[]>([])
 
   // Define which scenes have dark backgrounds (need white text)
-  const darkBackgroundScenes = new Set(['intro', 'amherst', 'chicago', 'silicon-valley', 'amazon-key', 'future'])
+  const darkBackgroundScenes = new Set(['intro', 'amherst', 'chicago', 'silicon-valley', 'amazon-key', 'future', 'credits'])
 
   const scenes: Scene[] = [
     {
@@ -128,10 +128,10 @@ function App() {
             <div className="code-window">
               <div className="code-header">C++ Low Latency Servers</div>
               <div className="code-content">
-                <span className="code-line">// Microsecond precision trading</span>
-                <span className="code-line">class OrderBook : public FIXEngine {'{'}</span>
-                <span className="code-line">  void execute_order(Order& o);</span>
-                <span className="code-line">{'}'};</span>
+                <span className="code-line code-comment">// Microsecond precision trading</span>
+                <span className="code-line code-class">class OrderBook : public FIXEngine {'{'}</span>
+                <span className="code-line code-method">  void execute_order(Order& o);</span>
+                <span className="code-line code-bracket">{'}'};</span>
               </div>
             </div>
             <div className="companies-flow">
@@ -191,7 +191,7 @@ function App() {
       background: 'linear-gradient(135deg, #2a4a4a 0%, #3a5a5a 100%)',
       computer: 'MacBook Pro 15"',
       phone: 'iPhone 4 → iPhone 4S',
-      personalStatus: 'Partner',
+      personalStatus: 'Partner, Kid',
       location: 'sf-peninsula'
     },
     {
@@ -239,7 +239,7 @@ function App() {
       computer: 'MacBook Pro 14" (M1 → M2 → M4 Max)',
       phone: 'iPhone X → 16 Pro Max',
       llm: 'Anthropic Claude 4',
-      personalStatus: 'Parent',
+      personalStatus: 'Parent, Partner, Kid',
       location: 'sf-peninsula'
     },
     {
@@ -269,6 +269,167 @@ function App() {
         </div>
       ),
       background: 'linear-gradient(135deg, #1f1f2e 0%, #2a2a3e 100%)',
+      location: 'sf-peninsula'
+    },
+    {
+      id: 'credits',
+      title: 'Credits & Tools',
+      content: (
+        <div className="scene-content credits">
+          <div className="credits-grid">
+            <div className="credits-section">
+              <h3>💻 Hardware</h3>
+              <div className="credits-items">
+                <div className="credit-item">
+                  <span className="credit-icon">🖥️</span>
+                  <div>
+                    <strong>MacBook Pro M4 Max</strong>
+                    <p>128GB RAM, 8TB Storage</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">⌨️</span>
+                  <div>
+                    <strong>Nulea Ergonomic + Magic Trackpad</strong>
+                    <p>Numpad removed, trackpad velcro-attached</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🖼️</span>
+                  <div>
+                    <strong>LG UltraFine Display</strong>
+                    <p>External Monitor</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🎧</span>
+                  <div>
+                    <strong>Apple Wired Headphones</strong>
+                    <p>Audio</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="credits-section">
+              <h3>🛠️ Development</h3>
+              <div className="credits-items">
+                <div className="credit-item">
+                  <span className="credit-icon">⌨️</span>
+                  <div>
+                    <strong>Vim + iTerm</strong>
+                    <p>Code editing</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">⚛️</span>
+                  <div>
+                    <strong>React + TypeScript</strong>
+                    <p>Frontend framework</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🐍</span>
+                  <div>
+                    <strong>Python</strong>
+                    <p>Backend & scripting</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🎭</span>
+                  <div>
+                    <strong>GSAP</strong>
+                    <p>Animation library</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="credits-section">
+              <h3>🎨 Design & Media</h3>
+              <div className="credits-items">
+                <div className="credit-item">
+                  <span className="credit-icon">🎯</span>
+                  <div>
+                    <strong>Figma</strong>
+                    <p>UI/UX design</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🎬</span>
+                  <div>
+                    <strong>After Effects</strong>
+                    <p>Motion graphics</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🖼️</span>
+                  <div>
+                    <strong>Photoshop + Illustrator</strong>
+                    <p>Image editing & vectors</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🎲</span>
+                  <div>
+                    <strong>Blender</strong>
+                    <p>3D modeling & animation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="credits-section">
+              <h3>📚 Learning</h3>
+              <div className="credits-items">
+                <div className="credit-item">
+                  <span className="credit-icon">🎬</span>
+                  <div>
+                    <strong>School of Motion</strong>
+                    <p>Motion design courses</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">💻</span>
+                  <div>
+                    <strong>Frontend Masters</strong>
+                    <p>Advanced web development</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">📺</span>
+                  <div>
+                    <strong>YouTube</strong>
+                    <p>Tutorials & inspiration</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🏃</span>
+                  <div>
+                    <strong>Polygon Runway</strong>
+                    <p>3D & motion graphics</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🍪</span>
+                  <div>
+                    <strong>CG Cookie</strong>
+                    <p>Blender tutorials</p>
+                  </div>
+                </div>
+                <div className="credit-item">
+                  <span className="credit-icon">🎨</span>
+                  <div>
+                    <strong>LearnUI Design</strong>
+                    <p>UI/UX fundamentals</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      background: 'linear-gradient(135deg, #2d1b69 0%, #11998e 100%)',
       location: 'sf-peninsula'
     }
   ]
