@@ -789,7 +789,7 @@ body[data-scene="credits"] .status-text {
   justify-content: center;
   gap: 0.3rem;
   font-size: 0.7rem;
-  font-weight: 400;
+  font-weight: 600;
   color: #666;
   min-height: 40px;
 }
@@ -1940,6 +1940,91 @@ body[data-scene="credits"] .status-text {
   50% {
     opacity: 0.7;
     transform: scale(1.2);
+  }
+}
+
+/* Desktop max-width constraint */
+@media (min-width: 1200px) {
+  .scene {
+    padding: 60px 40px;
+  }
+  
+  .scene::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  /* Fixed elements positioning constraint */
+  .fixed-avatar {
+    left: max(40px, calc((100vw - 1200px) / 2 + 40px));
+  }
+  
+  .fixed-computer-timeline {
+    left: max(40px, calc((100vw - 1200px) / 2 + 40px));
+  }
+  
+  .fixed-map-indicator {
+    right: max(40px, calc((100vw - 1200px) / 2 + 40px));
+  }
+  
+  .fixed-personal-status {
+    right: max(40px, calc((100vw - 1200px) / 2 + 40px));
+  }
+  
+  /* Larger text for corner elements on desktop */
+  .fixed-avatar h2 {
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+  }
+  
+  .location-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .computer-indicator {
+    font-size: 0.9rem;
+  }
+  
+  .current-computer,
+  .current-phone,
+  .current-llm {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .computer-icon,
+  .phone-icon,
+  .llm-icon {
+    font-size: 1.2rem;
+  }
+  
+  .computer-name,
+  .phone-name,
+  .llm-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .personal-status-indicator {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .status-icon {
+    font-size: 1.1rem;
+  }
+  
+  .status-text {
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 }
 
