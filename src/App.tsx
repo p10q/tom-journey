@@ -337,7 +337,7 @@ function App() {
             <div className="credits-section">
               <h3>🛠️ Development</h3>
               <div className="credits-items">
-                <div className="credit-item" onClick={() => window.open('https://www.vim.org', '_blank')}>
+                <div className="credit-item" onClick={() => window.open('https://neovim.io', '_blank')}>
                   <span className="credit-icon">⌨️</span>
                   <div>
                     <strong>Vim + iTerm</strong>
