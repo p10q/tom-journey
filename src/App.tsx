@@ -400,7 +400,7 @@ function App() {
                   </div>
                 </div>
                 <div className="credit-item" onClick={() => window.open('https://blender.org', '_blank')}>
-                  <span className="credit-icon">🎲</span>
+                  <span className="credit-icon">🐵</span>
                   <div>
                     <strong>Blender</strong>
                     <p>3D modeling & animation</p>
