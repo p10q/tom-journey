@@ -259,7 +259,7 @@ function App() {
       background: 'linear-gradient(135deg, #3a4a5a 0%, #4a5a6a 100%)',
       computer: 'MacBook Pro 14" (M1 → M2 → M4 Max)',
       phone: 'iPhone X → 16 Pro Max',
-      llm: 'Anthropic Claude 4',
+      llm: 'Warp',
       personalStatus: 'Parent',
       location: 'sf-peninsula'
     },
@@ -365,10 +365,10 @@ function App() {
                     <p>Animation library</p>
                   </div>
                 </div>
-                <div className="credit-item" onClick={() => window.open('https://anthropic.com', '_blank')}>
+                <div className="credit-item" onClick={() => window.open('https://www.warp.dev', '_blank')}>
                   <span className="credit-icon">⚡</span>
                   <div>
-                    <strong>Anthropic Claude</strong>
+                    <strong>Warp</strong>
                     <p>AI development partner</p>
                   </div>
                 </div>
