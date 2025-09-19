@@ -259,7 +259,7 @@ function App() {
       background: 'linear-gradient(135deg, #3a4a5a 0%, #4a5a6a 100%)',
       computer: 'MacBook Pro 14" (M1 → M2 → M4 Max)',
       phone: 'iPhone X → 16 Pro Max',
-      llm: 'Warp',
+      llm: 'Q CLI (Amazon Bedrock)',
       personalStatus: 'Parent',
       location: 'sf-peninsula'
     },
@@ -337,11 +337,11 @@ function App() {
             <div className="credits-section">
               <h3>🛠️ Development</h3>
               <div className="credits-items">
-                <div className="credit-item" onClick={() => window.open('https://neovim.io', '_blank')}>
+                <div className="credit-item" onClick={() => window.open('https://github.com/aws/amazon-q-developer-cli', '_blank')}>
                   <span className="credit-icon">⌨️</span>
                   <div>
-                    <strong>Vim + iTerm</strong>
-                    <p>Code editing</p>
+                    <strong>Vim + Q CLI</strong>
+                    <p>Code editing quickly</p>
                   </div>
                 </div>
                 <div className="credit-item" onClick={() => window.open('https://react.dev', '_blank')}>
@@ -369,7 +369,7 @@ function App() {
                   <span className="credit-icon">⚡</span>
                   <div>
                     <strong>Warp</strong>
-                    <p>AI development partner</p>
+                    <p>Modern terminal</p>
                   </div>
                 </div>
               </div>
@@ -409,7 +409,7 @@ function App() {
                 <div className="credit-item">
                   <span className="credit-icon">📓</span>
                   <div>
-                    <strong>Paper & Pencil</strong>
+                    <strong>Paper & Pen</strong>
                     <p>Sketching & ideation</p>
                   </div>
                 </div>
@@ -430,7 +430,7 @@ function App() {
                   <span className="credit-icon">💻</span>
                   <div>
                     <strong>Frontend Masters</strong>
-                    <p>Advanced web development</p>
+                    <p>Web development</p>
                   </div>
                 </div>
                 <div className="credit-item" onClick={() => window.open('https://youtube.com', '_blank')}>

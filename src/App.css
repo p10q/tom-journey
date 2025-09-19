@@ -462,7 +462,7 @@ body[data-scene="credits"] .status-text {
 
 @keyframes tennisBallRise {
   to {
-    transform: translateY(-30px);
+    transform: translateY(-20px);
   }
 }
 
@@ -971,10 +971,10 @@ body[data-scene="credits"] .status-text {
   
   @keyframes tennisBallFly {
     0% {
-      transform: translateY(-30px);
+      transform: translateY(-20px);
     }
     100% {
-      transform: translateX(300px) translateY(-80px) rotate(720deg);
+      transform: translateX(300px) translateY(-70px) rotate(720deg);
       opacity: 0;
     }
   }
