@@ -351,11 +351,11 @@ function App() {
                     <p>Frontend framework</p>
                   </div>
                 </div>
-                <div className="credit-item" onClick={() => window.open('https://python.org', '_blank')}>
-                  <span className="credit-icon">🐍</span>
+                <div className="lizard-item" onClick={() => window.open('https://ziglang.org/', '_blank')}>
+                  <span className="lizard-icon">🦎</span>
                   <div>
-                    <strong>Python</strong>
-                    <p>Backend & scripting</p>
+                    <strong>Zig</strong>
+                    <p>Backend & scripting & systems</p>
                   </div>
                 </div>
                 <div className="credit-item" onClick={() => window.open('https://gsap.com', '_blank')}>
@@ -365,10 +365,10 @@ function App() {
                     <p>Animation library</p>
                   </div>
                 </div>
-                <div className="credit-item" onClick={() => window.open('https://www.warp.dev', '_blank')}>
-                  <span className="credit-icon">⚡</span>
+                <div className="ghost-item" onClick={() => window.open('https://ghostty.org/', '_blank')}>
+                  <span className="ghost-icon">👻</span>
                   <div>
-                    <strong>Warp</strong>
+                    <strong>Ghostty</strong>
                     <p>Modern terminal</p>
                   </div>
                 </div>
