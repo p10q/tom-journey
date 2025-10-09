@@ -358,11 +358,11 @@ function App() {
                     <p>Backend & scripting</p>
                   </div>
                 </div>
-                <div className="credit-item" onClick={() => window.open('https://gsap.com', '_blank')}>
+                <div className="credit-item" onClick={() => window.open('https://motion.dev/', '_blank')}>
                   <span className="credit-icon">🎭</span>
                   <div>
                     <strong>GSAP</strong>
-                    <p>Animation library</p>
+                    <p>Motion library</p>
                   </div>
                 </div>
                 <div className="credit-item" onClick={() => window.open('https://www.warp.dev', '_blank')}>
@@ -440,11 +440,11 @@ function App() {
                     <p>Tutorials & inspiration</p>
                   </div>
                 </div>
-                <div className="credit-item" onClick={() => window.open('https://cgcookie.com', '_blank')}>
-                  <span className="credit-icon">🍪</span>
+                <div className="credit-item" onClick={() => window.open('https://courses.joshwcomeau.com/', '_blank')}>
+                  <span className="credit-icon">🌈</span>
                   <div>
-                    <strong>CG Cookie</strong>
-                    <p>Blender tutorials</p>
+                    <strong>Josh Comeau</strong>
+                    <p>JS/React/Animation</p>
                   </div>
                 </div>
                 <div className="credit-item" onClick={() => window.open('https://learnui.design', '_blank')}>
