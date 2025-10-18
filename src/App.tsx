@@ -36,7 +36,7 @@ function App() {
   const scenes: Scene[] = [
     {
       id: 'intro',
-      title: 'Tom Harada',
+      title: 'Tom\’s Journey',
       content: (
         <div className="scene-content intro">
           <div className="scroll-indicator" onClick={() => setCurrentScene(1)}>
@@ -295,7 +295,7 @@ function App() {
     },
     {
       id: 'credits',
-      title: 'Credits & Tools',
+      title: 'Tools & Learnings',
       content: (
         <div className="scene-content credits">
           <div className="credits-grid">
@@ -361,8 +361,8 @@ function App() {
                 <div className="credit-item" onClick={() => window.open('https://motion.dev/', '_blank')}>
                   <span className="credit-icon">🎭</span>
                   <div>
-                    <strong>GSAP</strong>
-                    <p>Motion library</p>
+                    <strong>GSAP + Motion</strong>
+                    <p>Motion libraries</p>
                   </div>
                 </div>
                 <div className="credit-item" onClick={() => window.open('https://www.warp.dev', '_blank')}>
