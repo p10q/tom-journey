@@ -667,7 +667,12 @@ function App() {
       {/* Fixed Tom Avatar - hide on intro */}
       {currentScene > 0 && (
         <div className="fixed-avatar">
-          <TomAvatar currentScene={currentScene} />
+          <a
+            href="https://p10q.com"
+            style={{ display: 'block', cursor: 'pointer' }}
+          >
+            <TomAvatar currentScene={currentScene} />
+          </a>
         </div>
       )}
 
